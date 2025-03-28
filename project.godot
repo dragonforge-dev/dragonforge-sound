@@ -1,0 +1,28 @@
+; Engine configuration file.
+; It's best edited using the editor UI and not directly,
+; since the parameters that go here are not all obvious.
+;
+; Format:
+;   [section] ; section goes between []
+;   param=value ; assign values to parameters
+
+config_version=5
+
+[application]
+
+config/name="Dragonforge Sound"
+run/main_scene="uid://ceuotv6vw4sby"
+config/features=PackedStringArray("4.4", "Forward Plus")
+config/icon="uid://bxy00qm2kbv62"
+
+[audio]
+
+buses/default_bus_layout=""
+
+[autoload]
+
+Sound="*res://addons/dragonforge_dev_sound/utilties/sound/sound.tscn"
+
+[editor_plugins]
+
+enabled=PackedStringArray("res://addons/dragonforge_dev_sound/plugin.cfg")
