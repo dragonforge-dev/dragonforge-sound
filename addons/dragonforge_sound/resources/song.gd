@@ -1,4 +1,4 @@
-@icon("res://addons/dragonforge_dev_sound/assets/icons/music-library.png")
+@icon("res://addons/dragonforge_sound/assets/icons/music-library.png")
 class_name Song extends Resource
 
 
