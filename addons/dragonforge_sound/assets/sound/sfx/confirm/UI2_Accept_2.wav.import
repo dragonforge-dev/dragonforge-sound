@@ -3,12 +3,12 @@
 importer="wav"
 type="AudioStreamWAV"
 uid="uid://cdrf2huw86f18"
-path="res://.godot/imported/UI2_Accept_2.wav-b4e7888e83a5d58a554f442c85591521.sample"
+path="res://.godot/imported/UI2_Accept_2.wav-983a270b6c9ed0cfd58d05345ca58db1.sample"
 
 [deps]
 
-source_file="res://addons/dragonforge_dev_sound/assets/sound/sfx/confirm/UI2_Accept_2.wav"
-dest_files=["res://.godot/imported/UI2_Accept_2.wav-b4e7888e83a5d58a554f442c85591521.sample"]
+source_file="res://addons/dragonforge_sound/assets/sound/sfx/confirm/UI2_Accept_2.wav"
+dest_files=["res://.godot/imported/UI2_Accept_2.wav-983a270b6c9ed0cfd58d05345ca58db1.sample"]
 
 [params]
 

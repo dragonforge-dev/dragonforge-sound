@@ -3,12 +3,12 @@
 importer="wav"
 type="AudioStreamWAV"
 uid="uid://cpeki2se3tx20"
-path="res://.godot/imported/UI2_Button_1.wav-697e02edf995d34a519bf22017fec1e7.sample"
+path="res://.godot/imported/UI2_Button_1.wav-1569de1aa72de186cbad204a0fe7ee70.sample"
 
 [deps]
 
-source_file="res://addons/dragonforge_dev_sound/assets/sound/sfx/click/UI2_Button_1.wav"
-dest_files=["res://.godot/imported/UI2_Button_1.wav-697e02edf995d34a519bf22017fec1e7.sample"]
+source_file="res://addons/dragonforge_sound/assets/sound/sfx/click/UI2_Button_1.wav"
+dest_files=["res://.godot/imported/UI2_Button_1.wav-1569de1aa72de186cbad204a0fe7ee70.sample"]
 
 [params]
 
