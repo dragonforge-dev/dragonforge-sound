@@ -102,16 +102,6 @@ func play(sound: AudioStream, channel: CHANNEL):
 								AudioServer.PLAYBACK_TYPE_DEFAULT,
 								channel_name
 	)
-	#var player = AudioStreamPlayer.new()
-	#Engine.get_main_loop().current_scene.add_child(player)
-	#player.set_bus(channel_to_string(channel))
-	#player.set_stream(sound)
-	#player.play()
-#
-	#var timer = LifetimeTimer.new(player)
-	#timer.wait_time = sound.get_length()
-	#Engine.get_main_loop().current_scene.add_child(timer)
-	#timer.start()
 
 
 func channel_to_string(channel: CHANNEL):

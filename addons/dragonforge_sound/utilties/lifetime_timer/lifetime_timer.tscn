@@ -1,6 +1,0 @@
-[gd_scene load_steps=2 format=3 uid="uid://bsjniwfpnxflr"]
-
-[ext_resource type="Script" uid="uid://gnlr4jsymsc4" path="res://addons/dragonforge_sound/utilties/lifetime_timer/lifetime_timer.gd" id="1_lpttk"]
-
-[node name="LifetimeTimer" type="Timer"]
-script = ExtResource("1_lpttk")
