@@ -15,12 +15,13 @@ enum CHANNEL {
 }
 
 
-@export var default_button_pressed_sound: AudioStream
+@export var button_pressed_sound: AudioStream
 @export var volume_confirm_sound: AudioStream
 
 
 @onready var music_player: AudioStreamPlayer = $MusicPlayer
 @onready var dialogue_player: AudioStreamPlayer = $DialoguePlayer
+@onready var ui_sound_player: AudioStreamPlayer = $UISoundPlayer
 
 
 var sound_player: AudioStreamPlayer
@@ -31,8 +32,6 @@ func _ready() -> void:
 	sound_player = $SoundPlayer
 	sound_player.play()
 	sound_playback = sound_player.get_stream_playback()
-	for index in AudioServer.bus_count:
-		print(AudioServer.get_bus_name(index))
 
 
 func play_music(sound: Variant):
@@ -67,11 +66,13 @@ func play_sound_effect(sound: AudioStream):
 
 
 func play_ui_sound(sound: AudioStream):
-	play(sound, CHANNEL.UI)
+	var randomizer: AudioStreamRandomizer = ui_sound_player.stream
+	randomizer.add_stream(0, sound)
+	ui_sound_player.play()
 
 
 func play_button_pressed_sound():
-	play(default_button_pressed_sound, CHANNEL.UI)
+	play_ui_sound(button_pressed_sound)
 
 
 func play_ambient_sound(sound: AudioStream):
@@ -89,12 +90,8 @@ func play(sound: AudioStream, channel: CHANNEL):
 	if sound == null:
 			return
 	var channel_name = channel_to_string(channel)
-	print(channel_name)
-	var channel_index = AudioServer.get_bus_index(channel_name)
-	print(channel_index)
+	var channel_index = _channel_to_bus_index(channel)
 	var volume = db_to_linear(AudioServer.get_bus_volume_db(channel_index))
-	for index in AudioServer.bus_count:
-		print(AudioServer.get_bus_name(index))
 	sound_playback.play_stream(sound, 
 								0.0,
 								volume,
@@ -104,5 +101,23 @@ func play(sound: AudioStream, channel: CHANNEL):
 	)
 
 
-func channel_to_string(channel: CHANNEL):
+## Returns a String for the passed CHANNEL.
+func channel_to_string(channel: CHANNEL) -> String:
 	return CHANNEL.find_key(channel)
+
+
+## Returns the bus index for the passed CHANNEL.
+func _channel_to_bus_index(channel: CHANNEL) -> int:
+	return AudioServer.get_bus_index(Sound.channel_to_string(channel))
+
+
+## Sets the volume of the given CHANNEL using the float for the volume from 
+### 0.0 (off) to 1.0 (full volume).
+func set_channel_volume(channel: CHANNEL, new_value: float) -> void:
+	AudioServer.set_bus_volume_linear(_channel_to_bus_index(channel), new_value)
+
+
+## Returns the volume for the CHANNEL passed as a float from 0.0 (off) to 
+## 1.0 (full volume).
+func get_channel_volume(channel: CHANNEL) -> float:
+	return AudioServer.get_bus_volume_linear(_channel_to_bus_index(channel))
