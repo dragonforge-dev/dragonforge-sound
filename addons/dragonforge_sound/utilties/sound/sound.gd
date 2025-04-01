@@ -1,6 +1,7 @@
 extends Node
 
 
+signal volume_changed(audio_bus: CHANNEL, new_value: float)
 signal now_playing(song: Song)
 signal add_song_to_music_playlist(song: Song)
 
@@ -67,6 +68,8 @@ func play_sound_effect(sound: AudioStream):
 
 func play_ui_sound(sound: AudioStream):
 	var randomizer: AudioStreamRandomizer = ui_sound_player.stream
+	for stream in randomizer.streams_count:
+		randomizer.remove_stream(stream)
 	randomizer.add_stream(0, sound)
 	ui_sound_player.play()
 
@@ -115,6 +118,7 @@ func _channel_to_bus_index(channel: CHANNEL) -> int:
 ### 0.0 (off) to 1.0 (full volume).
 func set_channel_volume(channel: CHANNEL, new_value: float) -> void:
 	AudioServer.set_bus_volume_linear(_channel_to_bus_index(channel), new_value)
+	volume_changed.emit(channel, new_value)
 
 
 ## Returns the volume for the CHANNEL passed as a float from 0.0 (off) to 
