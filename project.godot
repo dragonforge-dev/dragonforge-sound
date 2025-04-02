@@ -17,8 +17,8 @@ config/icon="uid://bxy00qm2kbv62"
 
 [autoload]
 
-Sound="*res://addons/dragonforge_sound/sound.tscn"
 Game="*res://addons/dragonforge_game/game.tscn"
+Sound="*res://addons/dragonforge_sound/sound.tscn"
 
 [editor_plugins]
 
