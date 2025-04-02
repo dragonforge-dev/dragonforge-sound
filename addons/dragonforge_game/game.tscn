@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://bvwxsyeklphp3"]
+
+[ext_resource type="Script" uid="uid://0id1h22211qs" path="res://addons/dragonforge_game/game.gd" id="1_wp078"]
+
+[node name="Game" type="Node"]
+script = ExtResource("1_wp078")

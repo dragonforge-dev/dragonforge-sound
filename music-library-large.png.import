@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://bxy00qm2kbv62"
-path="res://.godot/imported/music-library-large.png-255578762d979b8a43054519cb9975e9.ctex"
+path="res://.godot/imported/music-library-large.png-89e1f3743cb634791be968b91803ba4f.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://addons/dragonforge_sound/assets/icons/music-library-large.png"
-dest_files=["res://.godot/imported/music-library-large.png-255578762d979b8a43054519cb9975e9.ctex"]
+source_file="res://music-library-large.png"
+dest_files=["res://.godot/imported/music-library-large.png-89e1f3743cb634791be968b91803ba4f.ctex"]
 
 [params]
 
