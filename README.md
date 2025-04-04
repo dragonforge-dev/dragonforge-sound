@@ -1,7 +1,7 @@
 # Dragonforge Sound Component
 A Sound Autoload singleton to handle all sound for a game.
-# Version 4.4.0
-Matches release of Godot 4.4.
+# Version 4.4.5
+For use with **Godot 4.4.stable** and later
 # Installation Instructions
 1. Copy the **dragonforge_sound** folder into your project's **addons** folder.
 2. Go to **Project -> Project Settings...**
