@@ -1,12 +1,6 @@
 extends Node
 
 
-@warning_ignore("unused_signal")
-signal fullscreen(fullscreen_on: bool)
-@warning_ignore("unused_signal")
-signal video_scale_changed(new_value: float)
-
-
 const SETTINGS_PATH = "user://configuration.settings"
 const SAVE_GAME_PATH = "user://game.save"
 

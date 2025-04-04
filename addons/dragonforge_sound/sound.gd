@@ -122,7 +122,7 @@ func _channel_to_bus_index(channel: CHANNEL) -> int:
 ### 0.0 (off) to 1.0 (full volume).
 func set_channel_volume(channel: CHANNEL, new_value: float) -> void:
 	AudioServer.set_bus_volume_linear(_channel_to_bus_index(channel), new_value)
-	Game.save_setting(new_value,channel_to_string(channel))
+	Game.save_setting(new_value, channel_to_string(channel))
 	volume_changed.emit(channel, new_value)
 
 
