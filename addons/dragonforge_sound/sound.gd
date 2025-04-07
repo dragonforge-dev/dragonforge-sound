@@ -64,6 +64,7 @@ func play_music(sound: Variant) -> void:
 
 
 ## Pauses the currently playing music.
+## Returns the playback position where the stream was paused as a float.
 func pause_music() -> float:
 	music_player.stream_paused = true
 	return music_player.get_playback_position()
@@ -78,21 +79,25 @@ func is_music_paused() -> bool:
 	return music_player.stream_paused
 
 ## Plays an AudioStream through the SFX (Sound Effects) Channel.
-func play_sound_effect(sound: AudioStream) -> void:
-	play(sound, CHANNEL.SFX)
+## Returns the UID of the playback stream as an int.
+func play_sound_effect(sound: AudioStream) -> int:
+	return play(sound, CHANNEL.SFX)
 
 
 ## Plays an AudioStream through the UI Channel.
-func play_ui_sound(sound: AudioStream) -> void:
-	play(sound, CHANNEL.UI)
+## Returns the UID of the playback stream as an int.
+func play_ui_sound(sound: AudioStream) -> int:
+	return play(sound, CHANNEL.UI)
 
 
 ## Plays the default click sound through the UI Channel.
-func play_button_pressed_sound() -> void:
-	play_ui_sound(button_pressed_sound)
+## Returns the UID of the playback stream as an int.
+func play_button_pressed_sound() -> int:
+	return play_ui_sound(button_pressed_sound)
 
 
 ## Plays an AudioStream through the Ambient Channel.
+## Returns the UID of the playback stream as an int.
 func play_ambient_sound(sound: AudioStream) -> int:
 	return play(sound, CHANNEL.Ambient)
 
@@ -106,7 +111,7 @@ func play_dialogue(sound: AudioStream) -> void:
 
 
 ## Plays an AudioStream on the given CHANNEL, randomly varying the pitch of the
-## sound by a factor of 15%. Returns the UID of the playback stream as an int.
+## sound by a factor of 10%. Returns the UID of the playback stream as an int.
 func play(sound: AudioStream, channel: CHANNEL) -> int:
 	if sound == null:
 			return -1
@@ -120,6 +125,7 @@ func play(sound: AudioStream, channel: CHANNEL) -> int:
 	)
 
 
+## Stops the playback of a polyphonic sound given the UID of the sound playing.
 func stop(uid: int) -> void:
 	sound_playback.stop_stream(uid)
 
