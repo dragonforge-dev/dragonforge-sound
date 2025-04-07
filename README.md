@@ -1,4 +1,4 @@
-# Dragonforge Sound Component
+# Dragonforge Sound
 A Sound Autoload singleton to handle all sound for a game.
 # Version 4.4.6
 For use with **Godot 4.4.stable** and later
