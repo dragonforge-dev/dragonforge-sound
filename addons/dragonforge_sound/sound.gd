@@ -16,30 +16,35 @@ enum CHANNEL {
 }
 
 
+## Default sound for when a button is pressed.
 @export var button_pressed_sound: AudioStream
+## Default sound for when the volume level is changed in the UI.
 @export var volume_confirm_sound: AudioStream
 
 
 @onready var music_player: AudioStreamPlayer = $MusicPlayer
 @onready var dialogue_player: AudioStreamPlayer = $DialoguePlayer
-@onready var ui_sound_player: AudioStreamPlayer = $UISoundPlayer
+@onready var sound_player: AudioStreamPlayer = $SoundPlayer
 
 
-var sound_player: AudioStreamPlayer
+# Stores a reference for playing polyphonic sounds (more than one at the same time).
 var sound_playback: AudioStreamPlaybackPolyphonic
 
 
+## Loads any saved volume settings and sets up the generic sound player for use.
 func _ready() -> void:
 	for channel_name in CHANNEL:
 		var value = Game.load_setting(channel_name)
 		if value:
 			AudioServer.set_bus_volume_linear(_channel_to_bus_index(CHANNEL[channel_name]), value)
-	sound_player = $SoundPlayer
 	sound_player.play()
 	sound_playback = sound_player.get_stream_playback()
 
 
-func play_music(sound: Variant):
+## Plays a Song or AudioStream through the music channel. Throws an error if the
+## passed object is not one of those two types, or if the Song's AudioStream
+## value is not set.
+func play_music(sound: Variant) -> void:
 	if sound == AudioStream:
 		var temp_sound = Song.new()
 		temp_sound.song = sound
@@ -58,55 +63,65 @@ func play_music(sound: Variant):
 	now_playing.emit(sound)
 
 
-func pause_music():
+## Pauses the currently playing music.
+func pause_music() -> float:
 	music_player.stream_paused = true
+	return music_player.get_playback_position()
 
 
-func unpause_music():
+## Unpauses the currently queued music.
+func unpause_music() -> void:
 	music_player.stream_paused = false
 
 
-func play_sound_effect(sound: AudioStream):
+func is_music_paused() -> bool:
+	return music_player.stream_paused
+
+## Plays an AudioStream through the SFX (Sound Effects) Channel.
+func play_sound_effect(sound: AudioStream) -> void:
 	play(sound, CHANNEL.SFX)
 
 
-func play_ui_sound(sound: AudioStream):
-	var randomizer: AudioStreamRandomizer = ui_sound_player.stream
-	for stream in randomizer.streams_count:
-		randomizer.remove_stream(stream)
-	randomizer.add_stream(0, sound)
-	ui_sound_player.play()
+## Plays an AudioStream through the UI Channel.
+func play_ui_sound(sound: AudioStream) -> void:
+	play(sound, CHANNEL.UI)
 
 
-func play_button_pressed_sound():
+## Plays the default click sound through the UI Channel.
+func play_button_pressed_sound() -> void:
 	play_ui_sound(button_pressed_sound)
 
 
-func play_ambient_sound(sound: AudioStream):
-	play(sound, CHANNEL.Ambient)
+## Plays an AudioStream through the Ambient Channel.
+func play_ambient_sound(sound: AudioStream) -> int:
+	return play(sound, CHANNEL.Ambient)
 
 
-func play_dialogue(sound: AudioStream):
+## Plays an AudioStream through the Dialogue Channel.
+func play_dialogue(sound: AudioStream) -> void:
 	if sound == null:
 			return
 	dialogue_player.set_stream(sound)
 	dialogue_player.play()
 
 
-func play(sound: AudioStream, channel: CHANNEL):
+## Plays an AudioStream on the given CHANNEL, randomly varying the pitch of the
+## sound by a factor of 15%. Returns the UID of the playback stream as an int.
+func play(sound: AudioStream, channel: CHANNEL) -> int:
 	if sound == null:
-			return
+			return -1
 	var channel_name = channel_to_string(channel)
-	var channel_index = _channel_to_bus_index(channel)
-	var volume = db_to_linear(AudioServer.get_bus_volume_db(channel_index))
-	sound_playback.play_stream(sound, 
+	return sound_playback.play_stream(sound,
 								0.0,
-								volume,
-								1.0,
+								0.0,
+								randf_range(1.0, 1.1),
 								AudioServer.PLAYBACK_TYPE_DEFAULT,
 								channel_name
 	)
 
+
+func stop(uid: int) -> void:
+	sound_playback.stop_stream(uid)
 
 ## Returns a String for the passed CHANNEL.
 func channel_to_string(channel: CHANNEL) -> String:

@@ -43,8 +43,30 @@ theme_override_constants/margin_bottom = 20
 layout_mode = 2
 theme_override_constants/separation = 20
 
-[node name="Button" type="Button" parent="Panel/MarginContainer/VBoxContainer"]
+[node name="UI Click Button" type="Button" parent="Panel/MarginContainer/VBoxContainer"]
 layout_mode = 2
 text = "Play Click"
 
-[connection signal="pressed" from="Panel/MarginContainer/VBoxContainer/Button" to="." method="_on_button_pressed"]
+[node name="Blacksmithing Button" type="Button" parent="Panel/MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "Play Blacksmithing Sound"
+
+[node name="Logging Button" type="Button" parent="Panel/MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "Play Logging Sound"
+
+[node name="Ambient Sound Button" type="Button" parent="Panel/MarginContainer/VBoxContainer"]
+layout_mode = 2
+toggle_mode = true
+text = "Play Ambient Sounds"
+
+[node name="Music Button" type="Button" parent="Panel/MarginContainer/VBoxContainer"]
+layout_mode = 2
+toggle_mode = true
+text = "Play Music"
+
+[connection signal="pressed" from="Panel/MarginContainer/VBoxContainer/UI Click Button" to="." method="_on_ui_click_button_pressed"]
+[connection signal="pressed" from="Panel/MarginContainer/VBoxContainer/Blacksmithing Button" to="." method="_on_blacksmithing_button_pressed"]
+[connection signal="pressed" from="Panel/MarginContainer/VBoxContainer/Logging Button" to="." method="_on_chop_wood_button_pressed"]
+[connection signal="toggled" from="Panel/MarginContainer/VBoxContainer/Ambient Sound Button" to="." method="_on_ambient_sound_button_toggled"]
+[connection signal="toggled" from="Panel/MarginContainer/VBoxContainer/Music Button" to="." method="_on_music_button_toggled"]

@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="Song" load_steps=3 format=3 uid="uid://bpe6x5dq4fl58"]
+
+[ext_resource type="Script" uid="uid://crtp3aqhoaixr" path="res://addons/dragonforge_sound/resources/song.gd" id="1_lpmsi"]
+[ext_resource type="AudioStream" uid="uid://cr8aq516343vi" path="res://test/OST 1 - Clear Waters (Loopable).ogg" id="2_agvhy"]
+
+[resource]
+script = ExtResource("1_lpmsi")
+song = ExtResource("2_agvhy")
+title = "Clear Waters"
+artist = "pegonthetrack & ELVGames"
+album = "Epic Medieval Music Pack I"
+album_link = "https://elvgames.itch.io/epic-medieval-music-pack"
+metadata/_custom_type_script = "uid://crtp3aqhoaixr"
