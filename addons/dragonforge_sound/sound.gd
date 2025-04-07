@@ -75,6 +75,7 @@ func unpause_music() -> void:
 	music_player.stream_paused = false
 
 
+## Returns whether or not the music stream is paused.
 func is_music_paused() -> bool:
 	return music_player.stream_paused
 
