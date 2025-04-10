@@ -1,15 +1,23 @@
 extends Control
 
+const FIELD_WORKSHOP = preload("res://test/field_workshop.tres")
+const MINING = preload("res://test/mining.tres")
+const DIGGING = preload("res://test/digging.tres")
+const ANVIL_RANDOM_PITCH = preload("res://test/anvil_random_pitch.tres")
+const LOGGING_RANDOM_PITCH = preload("res://test/logging_random_pitch.tres")
 
-@onready var blacksmithing: AudioStream = load("res://test/Blacksmith Anvil Ting B.wav")
+
 @onready var chop_wood: AudioStream = load("res://test/Wood Chop Loose A.wav")
 @onready var daytime_field: AudioStream = load("res://test/Field Day Loop.wav")
 @onready var clear_waters: Song = load("res://test/clear_waters.tres")
 @onready var ambient_sound_button: Button = $"Panel/MarginContainer/VBoxContainer/Ambient Sound Button"
-@onready var music_button: Button = $"Panel/MarginContainer/VBoxContainer/Music Button"
+@onready var music_button: Button = $"Panel/MarginContainer/VBoxContainer/HBoxContainer/Music Button"
+@onready var consecutive_button: Button = $"Panel/MarginContainer/VBoxContainer/Consecutive Button"
+@onready var stop_music_button: Button = $"Panel/MarginContainer/VBoxContainer/HBoxContainer/Stop Music Button"
 
 
 var ambient_sound_uid: int
+var consecutive_sound_uid: int
 
 
 func _on_ui_click_button_pressed() -> void:
@@ -17,11 +25,11 @@ func _on_ui_click_button_pressed() -> void:
 
 
 func _on_blacksmithing_button_pressed() -> void:
-	Sound.play_sound_effect(blacksmithing)
+	ANVIL_RANDOM_PITCH.play()
 
 
 func _on_chop_wood_button_pressed() -> void:
-	Sound.play_sound_effect(chop_wood)
+	LOGGING_RANDOM_PITCH.play()
 
 
 func _on_ambient_sound_button_toggled(toggled_on: bool) -> void:
@@ -36,10 +44,43 @@ func _on_ambient_sound_button_toggled(toggled_on: bool) -> void:
 func _on_music_button_toggled(toggled_on: bool) -> void:
 	if toggled_on:
 		music_button.text = "Pause Music"
-		if Sound.is_music_paused():
-			Sound.unpause_music()
+		stop_music_button.show()
+		if Music.is_paused():
+			Music.unpause()
 		else:
-			Sound.play_music(clear_waters)
+			clear_waters.play()
 	else:
 		music_button.text = "Play Music"
-		Sound.pause_music()
+		Music.pause()
+		stop_music_button.hide()
+
+
+func _on_stop_music_button_pressed() -> void:
+	Music.stop()
+	stop_music_button.hide()
+	music_button.text = "Play Music"
+	music_button.set_pressed_no_signal(false)
+
+
+func _on_consecutive_button_toggled(toggled_on: bool) -> void:
+	if toggled_on:
+		consecutive_button.text = "Stop Consecutive Sounds"
+		consecutive_sound_uid = Sound.play_ambient_sound(FIELD_WORKSHOP)
+	else:
+		consecutive_button.text = "Play Consecutive Sounds"
+		Sound.stop(consecutive_sound_uid)
+
+
+func _on_playlist_button_pressed() -> void:
+	MINING.play()
+
+
+func _on_random_playlist_button_pressed() -> void:
+	DIGGING.play()
+
+
+func _on_pause_button_toggled(toggled_on: bool) -> void:
+	if toggled_on:
+		get_tree().paused = true
+	else:
+		get_tree().paused = false

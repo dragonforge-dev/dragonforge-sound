@@ -1,4 +1,4 @@
-@icon("res://addons/dragonforge_sound/assets/icons/music-library.png")
+@icon("res://addons/dragonforge_sound/assets/icons/song.svg")
 class_name Song extends Resource
 
 
@@ -6,9 +6,10 @@ class_name Song extends Resource
 @export var song: AudioStream
 ## The human readable name of the song.
 @export var title: String
-## The name of the song's artist.
-@export var artist: String
-## The album name.
-@export var album: String
-## A url link to the album.
-@export var album_link: String
+## The album information for the song.
+@export var album: Album
+
+
+func play() -> void:
+	Music.play(song)
+	Music.now_playing.emit(self)

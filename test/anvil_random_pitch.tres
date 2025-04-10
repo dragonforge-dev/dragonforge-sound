@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="SoundEffect" load_steps=4 format=3 uid="uid://d1ejl4l545fa6"]
+
+[ext_resource type="Script" uid="uid://b7r30kknqypxw" path="res://addons/dragonforge_sound/resources/sound_effect.gd" id="1_jn78l"]
+[ext_resource type="AudioStream" uid="uid://c1yg6h2sayf1u" path="res://test/Blacksmith Anvil Ting B.wav" id="2_s45yo"]
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_806hd"]
+random_pitch = 1.02
+streams_count = 1
+stream_0/stream = ExtResource("2_s45yo")
+
+[resource]
+script = ExtResource("1_jn78l")
+stream = SubResource("AudioStreamRandomizer_806hd")
+play_only_one_sound = false
+title = ""
+metadata/_custom_type_script = "uid://b7r30kknqypxw"

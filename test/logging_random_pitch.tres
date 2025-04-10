@@ -1,0 +1,17 @@
+[gd_resource type="Resource" script_class="SoundEffect" load_steps=4 format=3 uid="uid://bb7hid5d7y1a8"]
+
+[ext_resource type="Script" uid="uid://b7r30kknqypxw" path="res://addons/dragonforge_sound/resources/sound_effect.gd" id="1_0jxsr"]
+[ext_resource type="AudioStream" uid="uid://ctsokfvnmucxm" path="res://test/Wood Chop Loose A.wav" id="2_hpgxr"]
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_ooxwr"]
+random_pitch = 1.1
+random_volume_offset_db = 2.0
+streams_count = 1
+stream_0/stream = ExtResource("2_hpgxr")
+
+[resource]
+script = ExtResource("1_0jxsr")
+stream = SubResource("AudioStreamRandomizer_ooxwr")
+play_only_one_sound = false
+title = ""
+metadata/_custom_type_script = "uid://b7r30kknqypxw"

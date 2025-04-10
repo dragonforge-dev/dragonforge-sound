@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://bbfb7nttnwuwa"
+path="res://.godot/imported/Mine Medium Rock B.wav-4fdfa8032dcd92fd1b0e6936c65eb0d8.sample"
+
+[deps]
+
+source_file="res://test/Mine Medium Rock B.wav"
+dest_files=["res://.godot/imported/Mine Medium Rock B.wav-4fdfa8032dcd92fd1b0e6936c65eb0d8.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2

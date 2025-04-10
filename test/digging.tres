@@ -1,0 +1,22 @@
+[gd_resource type="Resource" script_class="SoundEffect" load_steps=7 format=3 uid="uid://dvrt6rrfwmqut"]
+
+[ext_resource type="Resource" uid="uid://c5ver7bsalkhw" path="res://test/harvesting_project.tres" id="1_djqj8"]
+[ext_resource type="Script" uid="uid://b7r30kknqypxw" path="res://addons/dragonforge_sound/resources/sound_effect.gd" id="1_x564c"]
+[ext_resource type="AudioStream" uid="uid://drbs08a8ro18a" path="res://test/Dig A.wav" id="2_fgvdf"]
+[ext_resource type="AudioStream" uid="uid://bd1rkt4ritmpj" path="res://test/Dig D.wav" id="3_djqj8"]
+[ext_resource type="AudioStream" uid="uid://dguxitjirdbal" path="res://test/Dig E.wav" id="4_pesb1"]
+
+[sub_resource type="AudioStreamPlaylist" id="AudioStreamPlaylist_k1fa6"]
+shuffle = true
+stream_count = 3
+stream_0 = ExtResource("2_fgvdf")
+stream_1 = ExtResource("3_djqj8")
+stream_2 = ExtResource("4_pesb1")
+
+[resource]
+script = ExtResource("1_x564c")
+stream = SubResource("AudioStreamPlaylist_k1fa6")
+play_only_one_sound = true
+title = "Digging"
+project = ExtResource("1_djqj8")
+metadata/_custom_type_script = "uid://b7r30kknqypxw"

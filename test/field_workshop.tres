@@ -1,0 +1,31 @@
+[gd_resource type="Resource" script_class="SoundEffect" load_steps=8 format=3 uid="uid://b2v4nygwvap6c"]
+
+[ext_resource type="Script" uid="uid://b7r30kknqypxw" path="res://addons/dragonforge_sound/resources/sound_effect.gd" id="1_0ydt5"]
+[ext_resource type="Resource" uid="uid://c5ver7bsalkhw" path="res://test/harvesting_project.tres" id="1_v4d6k"]
+[ext_resource type="AudioStream" uid="uid://dx27mf6ex70s3" path="res://test/Field Day Loop.wav" id="2_h0ibm"]
+[ext_resource type="AudioStream" uid="uid://c1yg6h2sayf1u" path="res://test/Blacksmith Anvil Ting B.wav" id="3_v4d6k"]
+[ext_resource type="AudioStream" uid="uid://ctsokfvnmucxm" path="res://test/Wood Chop Loose A.wav" id="4_c5p1l"]
+
+[sub_resource type="AudioStreamPlaylist" id="AudioStreamPlaylist_jqgs6"]
+shuffle = true
+fade_time = 1.0
+stream_count = 4
+stream_0 = ExtResource("3_v4d6k")
+stream_1 = ExtResource("3_v4d6k")
+stream_2 = ExtResource("4_c5p1l")
+stream_3 = ExtResource("4_c5p1l")
+
+[sub_resource type="AudioStreamSynchronized" id="AudioStreamSynchronized_ubq0p"]
+stream_count = 2
+stream_0/stream = ExtResource("2_h0ibm")
+stream_0/volume = 0.0
+stream_1/stream = SubResource("AudioStreamPlaylist_jqgs6")
+stream_1/volume = 0.0
+
+[resource]
+script = ExtResource("1_0ydt5")
+stream = SubResource("AudioStreamSynchronized_ubq0p")
+play_only_one_sound = false
+title = "Field Workshop"
+project = ExtResource("1_v4d6k")
+metadata/_custom_type_script = "uid://b7r30kknqypxw"

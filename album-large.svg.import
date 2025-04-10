@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bxy00qm2kbv62"
-path="res://.godot/imported/music-library-large.png-89e1f3743cb634791be968b91803ba4f.ctex"
+uid="uid://cmcweehn13y6j"
+path="res://.godot/imported/album-large.svg-b561713536af3e2c244adf8149898586.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://music-library-large.png"
-dest_files=["res://.godot/imported/music-library-large.png-89e1f3743cb634791be968b91803ba4f.ctex"]
+source_file="res://album-large.svg"
+dest_files=["res://.godot/imported/album-large.svg-b561713536af3e2c244adf8149898586.ctex"]
 
 [params]
 
@@ -32,3 +32,6 @@ process/hdr_as_srgb=false
 process/hdr_clamp_exposure=false
 process/size_limit=0
 detect_3d/compress_to=1
+svg/scale=1.0
+editor/scale_with_editor_scale=false
+editor/convert_colors_with_editor_theme=false

@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="Album" load_steps=2 format=3 uid="uid://ctkbb7x6hq228"]
+
+[ext_resource type="Script" uid="uid://b4o4ygvaj344p" path="res://addons/dragonforge_sound/resources/album.gd" id="1_xrmax"]
+
+[resource]
+script = ExtResource("1_xrmax")
+name = "Epic Medieval Music Pack I"
+artist = "pegonthetrack & ELVGames"
+link = "https://elvgames.itch.io/epic-medieval-music-pack"
+metadata/_custom_type_script = "uid://b4o4ygvaj344p"

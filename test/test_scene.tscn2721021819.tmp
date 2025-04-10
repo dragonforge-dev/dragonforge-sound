@@ -12,7 +12,7 @@ grow_vertical = 2
 script = ExtResource("1_m5cd5")
 
 [node name="Panel" type="Panel" parent="."]
-custom_minimum_size = Vector2(300, 500)
+custom_minimum_size = Vector2(300, 400)
 layout_mode = 2
 offset_left = 426.0
 offset_top = 124.0
@@ -60,24 +60,13 @@ layout_mode = 2
 toggle_mode = true
 text = "Play Ambient Sounds"
 
-[node name="HBoxContainer" type="HBoxContainer" parent="Panel/MarginContainer/VBoxContainer"]
+[node name="Music Button" type="Button" parent="Panel/MarginContainer/VBoxContainer"]
 layout_mode = 2
-theme_override_constants/separation = 10
-
-[node name="Music Button" type="Button" parent="Panel/MarginContainer/VBoxContainer/HBoxContainer"]
-layout_mode = 2
-size_flags_horizontal = 3
 toggle_mode = true
 text = "Play Music"
 
-[node name="Stop Music Button" type="Button" parent="Panel/MarginContainer/VBoxContainer/HBoxContainer"]
-visible = false
-layout_mode = 2
-text = "Stop Music"
-
 [node name="Consecutive Button" type="Button" parent="Panel/MarginContainer/VBoxContainer"]
 layout_mode = 2
-toggle_mode = true
 text = "Play Consecutive Sounds"
 
 [node name="Playlist Button" type="Button" parent="Panel/MarginContainer/VBoxContainer"]
@@ -88,21 +77,13 @@ text = "Play Playlist"
 layout_mode = 2
 text = "Randomize Playlist"
 
-[node name="Pause Button" type="Button" parent="Panel/MarginContainer/VBoxContainer"]
-process_mode = 3
-layout_mode = 2
-toggle_mode = true
-text = "Pause"
-
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 
 [connection signal="pressed" from="Panel/MarginContainer/VBoxContainer/UI Click Button" to="." method="_on_ui_click_button_pressed"]
 [connection signal="pressed" from="Panel/MarginContainer/VBoxContainer/Blacksmithing Button" to="." method="_on_blacksmithing_button_pressed"]
 [connection signal="pressed" from="Panel/MarginContainer/VBoxContainer/Logging Button" to="." method="_on_chop_wood_button_pressed"]
 [connection signal="toggled" from="Panel/MarginContainer/VBoxContainer/Ambient Sound Button" to="." method="_on_ambient_sound_button_toggled"]
-[connection signal="toggled" from="Panel/MarginContainer/VBoxContainer/HBoxContainer/Music Button" to="." method="_on_music_button_toggled"]
-[connection signal="pressed" from="Panel/MarginContainer/VBoxContainer/HBoxContainer/Stop Music Button" to="." method="_on_stop_music_button_pressed"]
-[connection signal="toggled" from="Panel/MarginContainer/VBoxContainer/Consecutive Button" to="." method="_on_consecutive_button_toggled"]
+[connection signal="toggled" from="Panel/MarginContainer/VBoxContainer/Music Button" to="." method="_on_music_button_toggled"]
+[connection signal="pressed" from="Panel/MarginContainer/VBoxContainer/Consecutive Button" to="." method="_on_consecutive_button_pressed"]
 [connection signal="pressed" from="Panel/MarginContainer/VBoxContainer/Playlist Button" to="." method="_on_playlist_button_pressed"]
 [connection signal="pressed" from="Panel/MarginContainer/VBoxContainer/Random Playlist Button" to="." method="_on_random_playlist_button_pressed"]
-[connection signal="toggled" from="Panel/MarginContainer/VBoxContainer/Pause Button" to="." method="_on_pause_button_toggled"]
