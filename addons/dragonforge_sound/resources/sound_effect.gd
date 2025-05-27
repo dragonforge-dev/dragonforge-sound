@@ -31,14 +31,14 @@ class_name SoundEffect extends Resource
 var iterator: int = 0
 
 
-func play(channel: Sound.CHANNEL = Sound.CHANNEL.SFX) -> int:
+func play(bus: String = Sound.sfx_bus_name) -> int:
 	var stream_to_play: AudioStream = stream
 	if stream is AudioStreamPlaylist and play_only_one_sound == true:
 		if stream.shuffle == true:
 			stream_to_play = _get_random_sound(stream)
 		else:
 			stream_to_play = _get_next_sound(stream)
-	return Sound.play(stream, channel)
+	return Sound.play(stream, bus)
 
 
 func _get_next_sound(playlist: AudioStreamPlaylist) -> AudioStream:

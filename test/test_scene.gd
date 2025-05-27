@@ -8,8 +8,9 @@ const LOGGING_RANDOM_PITCH = preload("res://test/logging_random_pitch.tres")
 
 
 @onready var chop_wood: AudioStream = load("res://test/Wood Chop Loose A.wav")
-@onready var daytime_field: AudioStream = load("res://test/Field Day Loop.wav")
+@onready var daytime_field: AudioStream = preload("res://test/Field Day Loop.wav")
 @onready var clear_waters: Song = load("res://test/clear_waters.tres")
+#@export var clear_waters: Song
 @onready var ambient_sound_button: Button = $"Panel/MarginContainer/VBoxContainer/Ambient Sound Button"
 @onready var music_button: Button = $"Panel/MarginContainer/VBoxContainer/HBoxContainer/Music Button"
 @onready var consecutive_button: Button = $"Panel/MarginContainer/VBoxContainer/Consecutive Button"
@@ -18,6 +19,11 @@ const LOGGING_RANDOM_PITCH = preload("res://test/logging_random_pitch.tres")
 
 var ambient_sound_uid: int
 var consecutive_sound_uid: int
+
+
+func _ready() -> void:
+	for index in AudioServer.bus_count:
+		print(AudioServer.get_bus_name(index))
 
 
 func _on_ui_click_button_pressed() -> void:
