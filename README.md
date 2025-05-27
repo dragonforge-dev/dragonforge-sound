@@ -1,6 +1,6 @@
 # Dragonforge Sound
 A Sound Autoload singleton to handle all sound for a game.
-# Version 4.4.8
+# Version 0.8
 For use with **Godot 4.4.1-stable** and later.
 # Installation Instructions
 The first thing to do is add buses. This plugin will work with only a master bus, but you will lose some functionality. Most importantly, the ability to play sound effects when the game is paused. We recommend adding **Music**, **SFX**, **Ambient**, **UI**, and **Dialogue** buses follwing the steps below. However they do not have to be named exactly the same. If you already have buses with different names, you just need to load the **Sound** scene and change the exported variables to match the buses you use. The plugin will take care of the rest. If you are using your own buses, go ahead and move to the next section.
