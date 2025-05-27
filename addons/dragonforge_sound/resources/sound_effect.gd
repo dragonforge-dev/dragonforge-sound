@@ -17,13 +17,15 @@ class_name SoundEffect extends Resource
 ## AudioStreamRandomizer - Allows for random pitches with sound effects. (For
 ## exampleto make a single mining sound less monotonous.)
 @export var stream: AudioStream
-## How much pitch variance should be in the sound effect(s) played.
-## Default is 1.0 (None). Increasing this number increases variation.
-## Recommended variance is between 1.05 and 1.2.
+## If the AudioStream is an AudioStreamPlaylist, and this value is true, it will
+## select the next sound in the playlist and play that. If the AudioStreamPlaylist
+## is set to shuffle, it will play a random sound from the playlist each time.
+## NOTE: This value has no effect if the AudioStream is not of type
+## AduioStreamPlaylist.
 @export var play_only_one_sound: bool = false
 ## Human readable name for the sound effect.
 @export var title: String
-## The project/album information for the sound effect  Primarily for the
+## The project information for the sound effect  Primarily for the developer
 ## to track where the effects were sourced.
 @export var project: SFXProject
 
