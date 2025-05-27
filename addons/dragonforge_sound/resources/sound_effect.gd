@@ -17,13 +17,15 @@ class_name SoundEffect extends Resource
 ## AudioStreamRandomizer - Allows for random pitches with sound effects. (For
 ## exampleto make a single mining sound less monotonous.)
 @export var stream: AudioStream
-## How much pitch variance should be in the sound effect(s) played.
-## Default is 1.0 (None). Increasing this number increases variation.
-## Recommended variance is between 1.05 and 1.2.
+## If the AudioStream is an AudioStreamPlaylist, and this value is true, it will
+## select the next sound in the playlist and play that. If the AudioStreamPlaylist
+## is set to shuffle, it will play a random sound from the playlist each time.
+## NOTE: This value has no effect if the AudioStream is not of type
+## AduioStreamPlaylist.
 @export var play_only_one_sound: bool = false
 ## Human readable name for the sound effect.
 @export var title: String
-## The project/album information for the sound effect  Primarily for the
+## The project information for the sound effect  Primarily for the developer
 ## to track where the effects were sourced.
 @export var project: SFXProject
 
@@ -31,14 +33,14 @@ class_name SoundEffect extends Resource
 var iterator: int = 0
 
 
-func play(channel: Sound.CHANNEL = Sound.CHANNEL.SFX) -> int:
+func play(bus: String = Sound.sfx_bus_name) -> int:
 	var stream_to_play: AudioStream = stream
 	if stream is AudioStreamPlaylist and play_only_one_sound == true:
 		if stream.shuffle == true:
 			stream_to_play = _get_random_sound(stream)
 		else:
 			stream_to_play = _get_next_sound(stream)
-	return Sound.play(stream, channel)
+	return Sound.play(stream, bus)
 
 
 func _get_next_sound(playlist: AudioStreamPlaylist) -> AudioStream:

@@ -1,44 +1,43 @@
 extends Node
 
-
-signal volume_changed(audio_bus: CHANNEL, new_value: float)
-
+signal volume_changed(audio_bus: String, new_value: float)
 
 const ERROR_MISSING_SOUND_EFFECT = preload("res://addons/dragonforge_sound/resources/error_missing_sound_effect.tres")
-
-
-enum CHANNEL {
-	Master,
-	Music,
-	SFX,
-	UI,
-	Ambient,
-	Dialogue,
-}
-
 
 ## Default sound for when a button is pressed.
 @export var button_pressed_sound: AudioStream
 ## Default sound for when the volume level is changed in the UI.
 @export var volume_confirm_sound: AudioStream
+## This bus must be created, or you must choose a different bus for music to play using Music.
+@export var music_bus_name = "Music"
+## This bus must be created, or you must choose a different bus for sound effects to work.
+@export var sfx_bus_name = "SFX"
+## This bus must be created, or you must choose a different bus for UI sound effects to work when the game is paused.
+@export var ui_bus_name = "UI"
+## This bus must be created, or you must choose a different bus for ambient sound effects to work.
+@export var ambient_bus_name = "Ambient"
 
+# Stores a reference for playing polyphonic sounds (more than one at the same time).
+var sound_playback: AudioStreamPlaybackPolyphonic
+# Stores a reference for playing polyphonic UI sounds (more than one at the same time).
+var ui_playback: AudioStreamPlaybackPolyphonic
 
+## A sound player dedicated to Dialogue.
 @onready var dialogue_player: AudioStreamPlayer = $DialoguePlayer
+## All sound effects go through this sound player unless they are for UI or played specifically
+## through another AudioStreamPlayer instance.
 @onready var sound_player: AudioStreamPlayer = $SoundPlayer
 ## The UISoundPlayer continues to work even if the game is paused.
 @onready var ui_sound_player: AudioStreamPlayer = $UISoundPlayer
 
 
-# Stores a reference for playing polyphonic sounds (more than one at the same time).
-var sound_playback: AudioStreamPlaybackPolyphonic
-var ui_playback: AudioStreamPlaybackPolyphonic
-
 ## Loads any saved volume settings and sets up the generic sound player for use.
 func _ready() -> void:
-	for channel_name in CHANNEL:
-		var value = Game.load_setting(channel_name)
+	for index in AudioServer.bus_count:
+		var bus = AudioServer.get_bus_name(index)
+		var value = Game.load_setting(bus)
 		if value:
-			AudioServer.set_bus_volume_linear(_channel_to_bus_index(CHANNEL[channel_name]), value)
+			AudioServer.set_bus_volume_linear(AudioServer.get_bus_index(bus), value)
 	sound_player.play()
 	sound_playback = sound_player.get_stream_playback()
 	ui_sound_player.play()
@@ -48,13 +47,13 @@ func _ready() -> void:
 ## Plays an AudioStream through the SFX (Sound Effects) Channel.
 ## Returns the UID of the playback stream as an int.
 func play_sound_effect(sound: Resource) -> int:
-	return play(sound, CHANNEL.SFX)
+	return play(sound, sfx_bus_name)
 
 
 ## Plays an AudioStream through the UI Channel.
 ## Returns the UID of the playback stream as an int.
 func play_ui_sound(sound: Resource) -> int:
-	return play(sound, CHANNEL.UI)
+	return play(sound, ui_bus_name)
 
 
 ## Plays the default click sound through the UI Channel.
@@ -66,7 +65,7 @@ func play_button_pressed_sound() -> int:
 ## Plays an AudioStream through the Ambient Channel.
 ## Returns the UID of the playback stream as an int.
 func play_ambient_sound(sound: Resource) -> int:
-	return play(sound, CHANNEL.Ambient)
+	return play(sound, ambient_bus_name)
 
 
 ## Plays an AudioStream through the Dialogue Channel.
@@ -79,8 +78,8 @@ func play_dialogue(sound: AudioStream) -> void:
 
 ## Returns the UID of the playback stream it uses to play the passed AudioStream
 ## on the given CHANNEL.
-func play(sound: Resource, channel: CHANNEL) -> int:
-	if channel == CHANNEL.UI:
+func play(sound: Resource, channel: String) -> int:
+	if channel == ui_bus_name:
 		return _play_polyphonic(ui_playback, sound, channel)
 	else:
 		return _play_polyphonic(sound_playback, sound, channel)
@@ -88,16 +87,16 @@ func play(sound: Resource, channel: CHANNEL) -> int:
 
 ## Returns the UID of the playback stream it uses to play the passed AudioStream
 ## on the given CHANNEL using the passed AudioStreamPlaybackPolyphonic object.
-func _play_polyphonic(playback: AudioStreamPlaybackPolyphonic, sound: Resource, channel: CHANNEL) -> int:
+func _play_polyphonic(playback: AudioStreamPlaybackPolyphonic, sound: Resource, bus: String) -> int:
 	if sound is SoundEffect:
-		return sound.play(channel)
+		return sound.play(bus)
 	if sound is Song:
 		sound.play()
 		return -1
 	if sound == null:
 		push_error("Cannot play sound %s. AudioStream is null." % [sound])
 		ERROR_MISSING_SOUND_EFFECT.play()
-	var channel_name = channel_to_string(channel)
+	var channel_name = bus
 	return playback.play_stream(sound,
 								0.0,
 								0.0,
@@ -112,25 +111,15 @@ func stop(uid: int) -> void:
 	sound_playback.stop_stream(uid)
 
 
-## Sets the volume of the given CHANNEL using the float for the volume from 
+## Sets the volume of the given bus using the float for the volume from 
 ### 0.0 (off) to 1.0 (full volume).
-func set_channel_volume(channel: CHANNEL, new_value: float) -> void:
-	AudioServer.set_bus_volume_linear(_channel_to_bus_index(channel), new_value)
-	Game.save_setting(new_value, channel_to_string(channel))
-	volume_changed.emit(channel, new_value)
+func set_bus_volume(bus: String, new_value: float) -> void:
+	AudioServer.set_bus_volume_linear(AudioServer.get_bus_index(bus), new_value)
+	Game.save_setting(new_value, bus)
+	volume_changed.emit(bus, new_value)
 
 
-## Returns the volume for the CHANNEL passed as a float from 0.0 (off) to 
+## Returns the volume for the bus passed as a float from 0.0 (off) to 
 ## 1.0 (full volume).
-func get_channel_volume(channel: CHANNEL) -> float:
-	return AudioServer.get_bus_volume_linear(_channel_to_bus_index(channel))
-
-
-## Returns a String for the passed CHANNEL.
-func channel_to_string(channel: CHANNEL) -> String:
-	return CHANNEL.find_key(channel)
-
-
-## Returns the bus index for the passed CHANNEL.
-func _channel_to_bus_index(channel: CHANNEL) -> int:
-	return AudioServer.get_bus_index(Sound.channel_to_string(channel))
+func get_bus_volume(bus: String) -> float:
+	return AudioServer.get_bus_volume_linear(AudioServer.get_bus_index(bus))

@@ -10,12 +10,16 @@ config_version=5
 
 [application]
 
-config/name="Dragonforge Sound v4.4.7"
+config/name="Dragonforge Sound v4.4.8"
 config/description="A sound autoload singleton to handle all sound for a game."
-config/version="4.4.7"
+config/version="4.4.8"
 run/main_scene="uid://ceuotv6vw4sby"
 config/features=PackedStringArray("4.4", "Forward Plus")
 config/icon="uid://cmcweehn13y6j"
+
+[audio]
+
+buses/default_bus_layout="res://addons/dragonforge_sound/resources/sound_component_bus_layout.tres"
 
 [autoload]
 
