@@ -1,6 +1,6 @@
 # Dragonforge Sound
 A Sound Autoload singleton to handle all sound for a game.
-# Version 0.8
+# Version 0.8.1
 - For use with **Godot 4.4.1-stable** and later.
 - **Requires** Dragonforge Disk version 0.3
 # Installation Instructions
@@ -14,8 +14,8 @@ Once you have the buses configured, do the following:
 2. If it does not exist already, copy the **dragonforge_disk** folder from the **addons** folder into your project's **addons** folder.
 3. Go to **Project -> Project Settings...**
 4. Select the **plugins** tab.
-5. Check the **On checkbox** under **Enabled** for **Dragonforge Sound**.
-6. Check the **On checkbox** under **Enabled** for **Dragonforge Disk** (if not already set).
+5. Check the **On checkbox** under **Enabled** for **Dragonforge Disk** (must be enabled **before** the Sound plugin or you will get errors).
+6. Check the **On checkbox** under **Enabled** for **Dragonforge Sound**.
 7. Press the **Close** button.
 
 # Usage Instructions
