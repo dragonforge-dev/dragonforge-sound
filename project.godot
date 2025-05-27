@@ -23,10 +23,10 @@ buses/default_bus_layout="res://addons/dragonforge_sound/resources/sound_compone
 
 [autoload]
 
-Game="*res://addons/dragonforge_game/game.tscn"
 Sound="*res://addons/dragonforge_sound/sound.tscn"
 Music="*res://addons/dragonforge_sound/music.tscn"
+Disk="*res://addons/dragonforge_disk/disk.tscn"
 
 [editor_plugins]
 
-enabled=PackedStringArray("res://addons/dragonforge_game/plugin.cfg", "res://addons/dragonforge_sound/plugin.cfg")
+enabled=PackedStringArray("res://addons/dragonforge_disk/plugin.cfg", "res://addons/dragonforge_sound/plugin.cfg")

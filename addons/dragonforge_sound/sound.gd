@@ -35,7 +35,7 @@ var ui_playback: AudioStreamPlaybackPolyphonic
 func _ready() -> void:
 	for index in AudioServer.bus_count:
 		var bus = AudioServer.get_bus_name(index)
-		var value = Game.load_setting(bus)
+		var value = Disk.load_setting(bus)
 		if value:
 			AudioServer.set_bus_volume_linear(AudioServer.get_bus_index(bus), value)
 	sound_player.play()
@@ -115,7 +115,7 @@ func stop(uid: int) -> void:
 ### 0.0 (off) to 1.0 (full volume).
 func set_bus_volume(bus: String, new_value: float) -> void:
 	AudioServer.set_bus_volume_linear(AudioServer.get_bus_index(bus), new_value)
-	Game.save_setting(new_value, bus)
+	Disk.save_setting(new_value, bus)
 	volume_changed.emit(bus, new_value)
 
 

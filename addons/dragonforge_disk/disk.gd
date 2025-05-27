@@ -1,5 +1,5 @@
 extends Node
-
+#TODO: Add unit tests.
 
 const SETTINGS_PATH = "user://configuration.settings"
 const SAVE_GAME_PATH = "user://game.save"
