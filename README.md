@@ -1,6 +1,6 @@
 # Dragonforge Sound
 A Sound Autoload singleton to handle all sound for a game.
-# Version 0.9
+# Version 0.9.0.1
 - For use with **Godot 4.4.1-stable** and later.
 - **Requires** Dragonforge Disk version 0.3
 # Installation Instructions

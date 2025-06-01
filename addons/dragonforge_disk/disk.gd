@@ -77,7 +77,7 @@ func save_setting(data: Variant, category: String) -> void:
 func load_setting(category: String) -> Variant:
 	if configuration_settings.has(category):
 		return configuration_settings[category]
-	return null
+	return ERR_DOES_NOT_EXIST
 
 
 ## Takes data and serializes it for saving.
