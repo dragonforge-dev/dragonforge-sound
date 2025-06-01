@@ -6,19 +6,19 @@ const DIGGING = preload("res://test/digging.tres")
 const ANVIL_RANDOM_PITCH = preload("res://test/anvil_random_pitch.tres")
 const LOGGING_RANDOM_PITCH = preload("res://test/logging_random_pitch.tres")
 
+@export var hero_song: Song
+
+var ambient_sound_uid: int
+var consecutive_sound_uid: int
 
 @onready var chop_wood: AudioStream = load("res://test/Wood Chop Loose A.wav")
 @onready var daytime_field: AudioStream = preload("res://test/Field Day Loop.wav")
 @onready var clear_waters: Song = load("res://test/clear_waters.tres")
-#@export var clear_waters: Song
 @onready var ambient_sound_button: Button = $"Panel/MarginContainer/VBoxContainer/Ambient Sound Button"
 @onready var music_button: Button = $"Panel/MarginContainer/VBoxContainer/HBoxContainer/Music Button"
+@onready var hero_music_button: Button = $"Panel/MarginContainer/VBoxContainer/Hero Music Button"
 @onready var consecutive_button: Button = $"Panel/MarginContainer/VBoxContainer/Consecutive Button"
 @onready var stop_music_button: Button = $"Panel/MarginContainer/VBoxContainer/HBoxContainer/Stop Music Button"
-
-
-var ambient_sound_uid: int
-var consecutive_sound_uid: int
 
 
 func _ready() -> void:
@@ -90,3 +90,7 @@ func _on_pause_button_toggled(toggled_on: bool) -> void:
 		get_tree().paused = true
 	else:
 		get_tree().paused = false
+
+
+func _on_hero_music_button_pressed() -> void:
+	hero_song.play()

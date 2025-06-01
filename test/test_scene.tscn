@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=3 uid="uid://ceuotv6vw4sby"]
+[gd_scene load_steps=3 format=3 uid="uid://ceuotv6vw4sby"]
 
 [ext_resource type="Script" uid="uid://cqb2dskharmbd" path="res://test/test_scene.gd" id="1_m5cd5"]
+[ext_resource type="Resource" uid="uid://b4qmpwwxkvwv3" path="res://test/hero_1.tres" id="2_lr5j1"]
 
 [node name="Test Scene" type="Control"]
 process_mode = 3
@@ -11,6 +12,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_m5cd5")
+hero_song = ExtResource("2_lr5j1")
 
 [node name="Panel" type="Panel" parent="."]
 custom_minimum_size = Vector2(300, 500)
@@ -76,6 +78,11 @@ visible = false
 layout_mode = 2
 text = "Stop Music"
 
+[node name="Hero Music Button" type="Button" parent="Panel/MarginContainer/VBoxContainer"]
+layout_mode = 2
+toggle_mode = true
+text = "Play Hero Music"
+
 [node name="Consecutive Button" type="Button" parent="Panel/MarginContainer/VBoxContainer"]
 layout_mode = 2
 toggle_mode = true
@@ -103,6 +110,7 @@ text = "Pause"
 [connection signal="toggled" from="Panel/MarginContainer/VBoxContainer/Ambient Sound Button" to="." method="_on_ambient_sound_button_toggled"]
 [connection signal="toggled" from="Panel/MarginContainer/VBoxContainer/HBoxContainer/Music Button" to="." method="_on_music_button_toggled"]
 [connection signal="pressed" from="Panel/MarginContainer/VBoxContainer/HBoxContainer/Stop Music Button" to="." method="_on_stop_music_button_pressed"]
+[connection signal="pressed" from="Panel/MarginContainer/VBoxContainer/Hero Music Button" to="." method="_on_hero_music_button_pressed"]
 [connection signal="toggled" from="Panel/MarginContainer/VBoxContainer/Consecutive Button" to="." method="_on_consecutive_button_toggled"]
 [connection signal="pressed" from="Panel/MarginContainer/VBoxContainer/Playlist Button" to="." method="_on_playlist_button_pressed"]
 [connection signal="pressed" from="Panel/MarginContainer/VBoxContainer/Random Playlist Button" to="." method="_on_random_playlist_button_pressed"]

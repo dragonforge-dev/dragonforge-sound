@@ -1,6 +1,6 @@
 # Dragonforge Sound
 A Sound Autoload singleton to handle all sound for a game.
-# Version 0.8.1
+# Version 0.9
 - For use with **Godot 4.4.1-stable** and later.
 - **Requires** Dragonforge Disk version 0.3
 # Installation Instructions
@@ -52,6 +52,16 @@ The **Music** system has been separated from the **Sound** system to facilitate 
 
 ### Song Resource ![Song Icon](addons/dragonforge_sound/assets/icons/song.svg)
 An **Song** resource contains information about a song. It includes an **AudioStream** containing the music itself, as well as the song's **Title** and **Album**. When a **Song** resource is played using the **Music** plugin, the song and album information is sent out as a signal that anything in your game can look for. This can be used for an in-game music displays for example.
+
+#### Play Transition (Fades In and Out and Crossfades)
+Setting this value for a song sets the [b]entrance[/b]. Has [i]no[/i] effect when this song stops playing. To fade a song out without playing another song call `Music.stop(fade = true)`
+
+[b]Options Are:[/b]
+- NONE: No fading. The current song (if any) is stopped and this one is started.
+- IN: The previous song (if any) is stopped, and this one fades in.
+- OUT: The previous song fades out and this one is started from the beginning after the fade is complete.
+- CROSS: The previous song fades out while this song fades in over the fade_time.
+- OUT_THEN_IN: The previous song (if any) fades out completely first using the fade_time, then this song fades in over the fade_time.
 
 ### Album Resource ![Album Icon](addons/dragonforge_sound/assets/icons/album.png)
 An **Album** resource contains information about an album, and can be linked to multiple songs. It contains the album's **Artist**, **Title** and an optional hyperlink url to the album online. This is intended both to help developers keep track of where their music came from, as well as make it easy to display that information in game jams or small indie games where you want to help people find the resources you used and give some advertising and credit to the song creators.

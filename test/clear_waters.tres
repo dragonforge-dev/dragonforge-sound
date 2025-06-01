@@ -9,4 +9,6 @@ script = ExtResource("1_lpmsi")
 song = ExtResource("2_agvhy")
 title = "Clear Waters"
 album = ExtResource("1_stxc4")
+fade = 1
+fade_time = 2.0
 metadata/_custom_type_script = "uid://crtp3aqhoaixr"
