@@ -1,6 +1,7 @@
 extends Node
 
 signal now_playing(song: Song)
+signal add_song_to_playlist(song: Song)
 
 enum Fade {
 	##Not intended to be used, but will function the same as NONE.
@@ -18,14 +19,28 @@ enum Fade {
 }
 
 const MUTE_VOLUME_DECIBAL := -80.0 # To mute the audio player
-const MUTE_LINEAR_VOLUME := 0.0 # To mute the audio player
 const DEFAULT_FADE_TIME := 4.0 # The time it takes to fade in/out in seconds
 
-@onready var music_player: AudioStreamPlayer = $MusicPlayer
+var music_player: AudioStreamPlayer
+
+@onready var game_music_player: AudioStreamPlayer = $GameMusicPlayer
+@onready var paused_game_music_player: AudioStreamPlayer = $PausedGameMusicPlayer
 
 
 func _ready() -> void:
 	now_playing.connect(_on_now_playing)
+	if get_tree().is_paused():
+		music_player = paused_game_music_player
+	else:
+		music_player = game_music_player
+
+
+func _notification(what: int) -> void:
+	match what:
+		NOTIFICATION_PAUSED:
+			music_player = paused_game_music_player
+		NOTIFICATION_UNPAUSED:
+			music_player = game_music_player
 
 
 ## Plays an AudioStream through the music channel. If a Song resource is passed,
