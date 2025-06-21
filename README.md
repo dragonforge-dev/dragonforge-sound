@@ -50,13 +50,22 @@ The plugin loads and saves volume levels. By using the appropriate functions, yo
 ## Music
 The **Music** system has been separated from the **Sound** system to facilitate easier coding. Music can play regular Godot **AudioStream**s, but can also use its own **Song** resources. You can use either or both when playing music.
 
+#### Signals
+- **now_playing(song: Song)** Sent every time a song is played. Includes all the song and album infromation.
+- **add_song_to_playlist(song: Song)** Can be called by a game to add a song to a playlist. A playlist can then listen and then add the given song to itself. Intended for use when you want an in-gmae playlist to add songs as rewards, or as they are heard.
+
+#### Paused Music
+As of version 0.10, the Music player has two players - one for when the game is playing, and one for when the game is paused (*e.g. get_tree().is_paused()*). If a song is set when the game is paused, that song with be played and paused whenever the game is in a paused state. Likewise it can only be stopped when the game is in a paused state. Similarily, a song playing in the game will pause when the game is paused, and resume when the game is unpaused.
+
+This was implemented due to issues trying to maintain and switch two different songs between the states. You do not have to do anything for this feature to work. It just does.
+
 ### Song Resource ![Song Icon](addons/dragonforge_sound/assets/icons/song.svg)
-An **Song** resource contains information about a song. It includes an **AudioStream** containing the music itself, as well as the song's **Title** and **Album**. When a **Song** resource is played using the **Music** plugin, the song and album information is sent out as a signal that anything in your game can look for. This can be used for an in-game music displays for example.
+A **Song** resource contains information about a song. It includes an **AudioStream** containing the music itself, as well as the song's **Title** and **Album**. When a **Song** resource is played using the **Music** plugin, the song and album information is sent out as a signal that anything in your game can look for. This can be used for an in-game music displays for example.
 
 #### Play Transition (Fades In and Out and Crossfades)
 Setting this value for a song sets the [b]entrance[/b]. Has [i]no[/i] effect when this song stops playing. To fade a song out without playing another song call `Music.stop(fade = true)`
 
-[b]Options Are:[/b]
+**Options Are:**
 - NONE: No fading. The current song (if any) is stopped and this one is started.
 - IN: The previous song (if any) is stopped, and this one fades in.
 - OUT: The previous song fades out and this one is started from the beginning after the fade is complete.
