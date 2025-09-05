@@ -71,6 +71,7 @@ func play_volume_confirm_sound(bus_name: String = ui_bus_name) -> void:
 	# Since polyphonice is causing other problems, a pooling solution for
 	# AudioStreamPlayers may be necessary.
 	var audio_stream_player: AudioStreamPlayer = AudioStreamPlayer.new()
+	add_child(audio_stream_player)
 	audio_stream_player.bus = bus_name
 	audio_stream_player.stream = volume_confirm_sound
 	audio_stream_player.play()
