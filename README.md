@@ -1,7 +1,7 @@
 [![Static Badge](https://img.shields.io/badge/Godot%20Engine-4.4.1.stable-blue?style=plastic&logo=godotengine)](https://godotengine.org/)
 # Dragonforge Sound
 A Sound Autoload singleton to handle all sound for a game.
-# Version 0.11
+# Version 0.12
 - For use with **Godot 4.4.1-stable** and later.
 - **Requires** Dragonforge Disk version 0.3
 # Installation Instructions
