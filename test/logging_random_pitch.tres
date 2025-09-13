@@ -12,6 +12,4 @@ stream_0/stream = ExtResource("2_hpgxr")
 [resource]
 script = ExtResource("1_0jxsr")
 stream = SubResource("AudioStreamRandomizer_ooxwr")
-play_only_one_sound = false
-title = ""
 metadata/_custom_type_script = "uid://b7r30kknqypxw"

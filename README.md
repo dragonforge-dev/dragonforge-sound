@@ -1,22 +1,24 @@
-[![Static Badge](https://img.shields.io/badge/Godot%20Engine-4.4.1.stable-blue?style=plastic&logo=godotengine)](https://godotengine.org/)
+[![Static Badge](https://img.shields.io/badge/Godot%20Engine-4.5.rc2-blue?style=plastic&logo=godotengine)](https://godotengine.org/)
 # Dragonforge Sound
 A Sound Autoload singleton to handle all sound for a game.
-# Version 0.12
-- For use with **Godot 4.4.1-stable** and later.
-- **Requires** Dragonforge Disk version 0.3
+# Version 0.13
+For use with **Godot 4.5.rc2** and later.
+## Dependencies
+The following dependencies are included in the addons folder and are required for the template to function.
+- [Dragonforge Disk (Save/Load) 0.5](https://github.com/dragonforge-dev/dragonforge-disk)
 # Installation Instructions
-1. Copy the **dragonforge_sound** folder from the **addons** folder into your project's **addons** folder.
-2. If it does not exist already, copy the **dragonforge_disk** folder from the **addons** folder into your project's **addons** folder.
+1. Copy the `dragonforge_sound` folder from the `addons` folder into your project's `addons` folder.
+2. If it does not exist already, copy the `dragonforge_disk` folder from the `addons` folder into your project's `addons` folder.
 3. Go to **Project -> Project Settings...**
 4. Select the **plugins** tab.
 5. Check the **On checkbox** under **Enabled** for **Dragonforge Disk** (must be enabled **before** the Sound plugin or you will get errors).
 6. Check the **On checkbox** under **Enabled** for **Dragonforge Sound**.
 7. Press the **Close** button.
 8. Save your project.
-9. In your project go to Project -> Reload Current Project.
+9. In your project go to **Project -> Reload Current Project**.
 10. Wait for the project to reload.
 
-**NOTE:** As of version 0.11, the plugin adds the buses it needs, after a restart. If the plugin is disabled, the buses are removed and a restart.
+**NOTE:** As of version 0.11, the plugin adds the buses it needs, after a restart. If the plugin is disabled, the buses are removed and a restart is required.
 
 # Usage Instructions
 This plugin manages sound for an entire game. It is intended to be easy to use, to centrally control sound resources, and reduce the memory usage of sound in the game.

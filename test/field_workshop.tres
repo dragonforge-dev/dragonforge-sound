@@ -25,7 +25,6 @@ stream_1/volume = 0.0
 [resource]
 script = ExtResource("1_0ydt5")
 stream = SubResource("AudioStreamSynchronized_ubq0p")
-play_only_one_sound = false
 title = "Field Workshop"
 project = ExtResource("1_v4d6k")
 metadata/_custom_type_script = "uid://b7r30kknqypxw"
