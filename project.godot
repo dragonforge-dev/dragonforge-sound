@@ -10,9 +10,9 @@ config_version=5
 
 [application]
 
-config/name="Dragonforge Sound v0.13.1"
+config/name="Dragonforge Sound v0.14"
 config/description="A sound autoload singleton to handle all sound for a game."
-config/version="0.13.1"
+config/version="0.14"
 run/main_scene="uid://ceuotv6vw4sby"
 config/features=PackedStringArray("4.5", "Forward Plus")
 config/icon="uid://cmcweehn13y6j"

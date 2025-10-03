@@ -30,6 +30,10 @@ func _on_ui_click_button_pressed() -> void:
 	Sound.play_button_pressed_sound()
 
 
+func _on_ui_volume_confirm_pressed() -> void:
+	Sound.play_volume_confirm_sound("UI")
+
+
 func _on_blacksmithing_button_pressed() -> void:
 	ANVIL_RANDOM_PITCH.play()
 

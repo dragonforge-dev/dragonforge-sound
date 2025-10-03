@@ -16,7 +16,7 @@ hero_song = ExtResource("2_lr5j1")
 
 [node name="Panel" type="Panel" parent="."]
 custom_minimum_size = Vector2(300, 500)
-layout_mode = 2
+layout_mode = 0
 offset_left = 426.0
 offset_top = 124.0
 offset_right = 726.0
@@ -46,9 +46,16 @@ theme_override_constants/margin_bottom = 20
 layout_mode = 2
 theme_override_constants/separation = 20
 
-[node name="UI Click Button" type="Button" parent="Panel/MarginContainer/VBoxContainer"]
+[node name="HBoxContainer2" type="HBoxContainer" parent="Panel/MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="UI Click Button" type="Button" parent="Panel/MarginContainer/VBoxContainer/HBoxContainer2"]
 layout_mode = 2
 text = "Play Click"
+
+[node name="UI Volume Confirm" type="Button" parent="Panel/MarginContainer/VBoxContainer/HBoxContainer2"]
+layout_mode = 2
+text = "Play Volume Confirm"
 
 [node name="Blacksmithing Button" type="Button" parent="Panel/MarginContainer/VBoxContainer"]
 layout_mode = 2
@@ -104,7 +111,8 @@ text = "Pause"
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 
-[connection signal="pressed" from="Panel/MarginContainer/VBoxContainer/UI Click Button" to="." method="_on_ui_click_button_pressed"]
+[connection signal="pressed" from="Panel/MarginContainer/VBoxContainer/HBoxContainer2/UI Click Button" to="." method="_on_ui_click_button_pressed"]
+[connection signal="pressed" from="Panel/MarginContainer/VBoxContainer/HBoxContainer2/UI Volume Confirm" to="." method="_on_ui_volume_confirm_pressed"]
 [connection signal="pressed" from="Panel/MarginContainer/VBoxContainer/Blacksmithing Button" to="." method="_on_blacksmithing_button_pressed"]
 [connection signal="pressed" from="Panel/MarginContainer/VBoxContainer/Logging Button" to="." method="_on_chop_wood_button_pressed"]
 [connection signal="toggled" from="Panel/MarginContainer/VBoxContainer/Ambient Sound Button" to="." method="_on_ambient_sound_button_toggled"]
