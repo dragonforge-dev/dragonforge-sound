@@ -35,7 +35,7 @@ func _on_ui_volume_confirm_pressed() -> void:
 
 
 func _on_blacksmithing_button_pressed() -> void:
-	ANVIL_RANDOM_PITCH.play()
+	ANVIL_RANDOM_PITCH.play("UI")
 
 
 func _on_chop_wood_button_pressed() -> void:
