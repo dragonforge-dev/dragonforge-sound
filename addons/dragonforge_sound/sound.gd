@@ -36,7 +36,7 @@ func _ready() -> void:
 	for index in AudioServer.bus_count:
 		var bus = AudioServer.get_bus_name(index)
 		var value = Disk.load_setting(bus)
-		if not value == ERR_DOES_NOT_EXIST:
+		if value:
 			AudioServer.set_bus_volume_linear(AudioServer.get_bus_index(bus), value)
 	sound_player.play()
 	sound_playback = sound_player.get_stream_playback()
