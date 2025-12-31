@@ -1,3 +1,5 @@
+@icon("res://addons/dragonforge_sound/assets/icons/sound.svg")
+## Sound Autoload
 extends Node
 
 signal volume_changed(audio_bus: String, new_value: float)
