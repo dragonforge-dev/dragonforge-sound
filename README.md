@@ -1,5 +1,5 @@
 [![Static Badge](https://img.shields.io/badge/Godot%20Engine-4.5.stable-blue?style=plastic&logo=godotengine)](https://godotengine.org/)
-# Dragonforge Sound
+# Dragonforge Sound <img src="/addons/dragonforge_sound/assets/icons/music.svg" width="32" alt="Sound Project Icon"/>
 A Sound Autoload singleton to handle all sound for a game.
 # Version 0.14.2
 For use with **Godot 4.5.stable** and later.
@@ -23,9 +23,9 @@ The following dependencies are included in the addons folder and are required fo
 # Usage Instructions
 This plugin manages sound for an entire game. It is intended to be easy to use, to centrally control sound resources, and reduce the memory usage of sound in the game.
 
-## Sound
+## Sound <img src="/addons/dragonforge_sound/assets/icons/sound.svg" width="32" alt="Sound Autoload Icon"/>
 
-### SoundEffect Resource ![Sound Effect Icon](addons/dragonforge_sound/assets/icons/sound-effect.svg)
+### SoundEffect Resource <img src="/addons/dragonforge_sound/assets/icons/sound-effect.svg" width="32" alt="Sound Effect Icon"/>
 The sound effect resource is a way to track information through an attached **SFXProject** resource. It holds an **AudioStream** to play the sound effect, as well as an optional **Title** and **SFXProject** which can hold information like an **Album** does for a **Song**.
 
 #### play_only_one_sound = true
@@ -33,7 +33,7 @@ If the `play_only_one_sound` boolean is set to `true`, and the `stream` is an **
 
 This feature can be used if - for example - you have a list of bespoke hammer sounds and you want a random one played each time the player swings a hammer. Making each stream inside the playlist an AudioStreamRandomizer would allow you even greater variablility by creating a random pitch each time.
 
-### SFXProject Resource ![Sound Effect Project Icon](addons/dragonforge_sound/assets/icons/crate.svg)
+### SFXProject Resource <img src="/addons/dragonforge_sound/assets/icons/crate.svg" width="32" alt="Sound Effect Project Icon"/>
 Like an **Album** this stores details about where the sound effect comes from. It contains the project's name, the creator and a link to the project. This is intended just to help developers track their sound effects. Especially useful if multiple people are working on the project. Unlike the **Album** resource, the plugin's code does nothing with this information.
 
 ### Volume
@@ -49,7 +49,7 @@ The plugin loads and saves volume levels. By using the appropriate functions, yo
 
 ### Using Custom Buses
 
-## Music
+## Music <img src="/addons/dragonforge_sound/assets/icons/music.svg" width="32" alt="Music Icon"/>
 The **Music** system has been separated from the **Sound** system to facilitate easier coding. Music can play regular Godot **AudioStream**s, but can also use its own **Song** resources. You can use either or both when playing music.
 
 #### Signals
@@ -61,7 +61,7 @@ As of version 0.10, the Music player has two players - one for when the game is 
 
 This was implemented due to issues trying to maintain and switch two different songs between the states. You do not have to do anything for this feature to work. It just does.
 
-### Song Resource ![Song Icon](addons/dragonforge_sound/assets/icons/song.svg)
+### Song Resource <img src="/addons/dragonforge_sound/assets/icons/song.svg" width="32" alt="Song Icon"/>
 A **Song** resource contains information about a song. It includes an **AudioStream** containing the music itself, as well as the song's **Title** and **Album**. When a **Song** resource is played using the **Music** plugin, the song and album information is sent out as a signal that anything in your game can look for. This can be used for an in-game music displays for example.
 
 #### Play Transition (Fades In and Out and Crossfades)
@@ -74,7 +74,7 @@ Setting this value for a song sets the [b]entrance[/b]. Has [i]no[/i] effect whe
 - CROSS: The previous song fades out while this song fades in over the fade_time.
 - OUT_THEN_IN: The previous song (if any) fades out completely first using the fade_time, then this song fades in over the fade_time.
 
-### Album Resource ![Album Icon](addons/dragonforge_sound/assets/icons/album.png)
+### Album Resource <img src="/addons/dragonforge_sound/assets/icons/album-large.svg" width="32" alt="Album Icon"/>
 An **Album** resource contains information about an album, and can be linked to multiple songs. It contains the album's **Artist**, **Title** and an optional hyperlink url to the album online. This is intended both to help developers keep track of where their music came from, as well as make it easy to display that information in game jams or small indie games where you want to help people find the resources you used and give some advertising and credit to the song creators.
 
 # Copyright
