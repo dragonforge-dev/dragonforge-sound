@@ -5,7 +5,7 @@ A Sound Autoload singleton to handle all sound for a game.
 For use with **Godot 4.5.stable** and later.
 ## Dependencies
 The following dependencies are included in the addons folder and are required for the template to function.
-- [Dragonforge Disk (Save/Load) 0.5](https://github.com/dragonforge-dev/dragonforge-disk)
+- [Dragonforge Disk (Save/Load) 0.6](https://github.com/dragonforge-dev/dragonforge-disk)
 # Installation Instructions
 1. Copy the `dragonforge_sound` folder from the `addons` folder into your project's `addons` folder.
 2. If it does not exist already, copy the `dragonforge_disk` folder from the `addons` folder into your project's `addons` folder.
