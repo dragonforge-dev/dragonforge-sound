@@ -1,5 +1,5 @@
 [![Static Badge](https://img.shields.io/badge/Godot%20Engine-4.5.stable-blue?style=plastic&logo=godotengine)](https://godotengine.org/)
-# Dragonforge Sound <img src="/addons/dragonforge_sound/assets/icons/music.svg" width="32" alt="Sound Project Icon"/>
+# Dragonforge Sound <img src="/addons/dragonforge_sound/assets/icons/sound.svg" width="32" alt="Sound Project Icon"/>
 A Sound Autoload singleton to handle all sound for a game.
 # Version 0.14.2
 For use with **Godot 4.5.stable** and later.
