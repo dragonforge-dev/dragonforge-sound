@@ -1,4 +1,8 @@
 [![Static Badge](https://img.shields.io/badge/Godot%20Engine-4.5.stable-blue?style=plastic&logo=godotengine)](https://godotengine.org/)
+[![License](https://img.shields.io/github/license/dragonforge-dev/dragonforge-sound?logo=mit)](https://github.com/dragonforge-dev/dragonforge-sound/blob/main/LICENSE)
+[![GitHub release badge](https://badgen.net/github/release/dragonforge-dev/dragonforge-sound/latest)](https://github.com/dragonforge-dev/dragonforge-sound/releases/latest)
+[![GitHub code size in bytes](https://img.shields.io/github/languages/code-size/dragonforge-dev/dragonforge-sound)](https://img.shields.io/github/languages/code-size/dragonforge-dev/dragonforge-sound)
+
 # Dragonforge Sound <img src="/addons/dragonforge_sound/assets/icons/sound.svg" width="32" alt="Sound Project Icon"/>
 A Sound Autoload singleton to handle all sound for a game.
 # Version 0.14.2
