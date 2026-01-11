@@ -5,7 +5,7 @@
 
 # Dragonforge Sound <img src="/addons/dragonforge_sound/assets/icons/sound.svg" width="32" alt="Sound Project Icon"/>
 A Sound Autoload singleton to handle all sound for a game.
-# Version 0.14.2
+# Version 0.15
 For use with **Godot 4.5.stable** and later.
 ## Dependencies
 The following dependencies are included in the addons folder and are required for the template to function.
@@ -99,3 +99,13 @@ These sound effects were licensed and paid for by Dragonforge Development which 
 Dig, Mine Medium Rock, and Wood Chop Loose sounds from [Harvesting Sound FX Pack](https://ovanisound.com/products/harvesting-sound-fx-pack) by [Ovani Sound](https://ovanisound.com/)
 Field Day Loop from [Environmental Ambiences Sound FX Pack Vol. 1](https://ovanisound.com/products/environmental-ambiences-sound-fx-pack-vol-1) by [Ovani Sound](https://ovanisound.com/)
 Blacksmith Anvil Ting sound from [Medieval Fantasy Sound FX Pack Vol. 4](https://ovanisound.com/products/medieval-fantasy-sound-fx-pack-vol-4) by [Ovani Sound](https://ovanisound.com/)
+
+# Localization
+This project's UI has been created to work with localization. You can easily use localization by using the [Dragonforge Localization](https://github.com/dragonforge-dev/dragonforge-localization) plugin. The following labels exist and should be given translations:
+
+- VOLUME
+- MAIN
+- MUSIC
+- SOUND_EFFECTS
+- DIALOGUE
+- BACK

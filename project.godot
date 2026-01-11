@@ -10,9 +10,9 @@ config_version=5
 
 [application]
 
-config/name="Dragonforge Sound v0.14.2"
+config/name="Dragonforge Sound v0.15"
 config/description="A sound autoload singleton to handle all sound for a game."
-config/version="0.14.2"
+config/version="0.15"
 run/main_scene="uid://ceuotv6vw4sby"
 config/features=PackedStringArray("4.5", "Forward Plus")
 config/icon="uid://cqc8egkwre73c"
@@ -26,7 +26,8 @@ buses/default_bus_layout="res://addons/dragonforge_sound/resources/sound_compone
 Disk="*res://addons/dragonforge_disk/disk.tscn"
 Sound="*res://addons/dragonforge_sound/sound.tscn"
 Music="*res://addons/dragonforge_sound/music.tscn"
+UI="*res://addons/dragonforge_user_interface/ui.tscn"
 
 [editor_plugins]
 
-enabled=PackedStringArray("res://addons/dragonforge_disk/plugin.cfg", "res://addons/dragonforge_sound/plugin.cfg")
+enabled=PackedStringArray("res://addons/dragonforge_disk/plugin.cfg", "res://addons/dragonforge_sound/plugin.cfg", "res://addons/dragonforge_user_interface/plugin.cfg")

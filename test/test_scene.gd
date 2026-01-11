@@ -14,16 +14,18 @@ var consecutive_sound_uid: int
 @onready var chop_wood: AudioStream = load("res://test/Wood Chop Loose A.wav")
 @onready var daytime_field: AudioStream = preload("res://test/Field Day Loop.wav")
 @onready var clear_waters: Song = load("res://test/clear_waters.tres")
-@onready var ambient_sound_button: Button = $"Panel/MarginContainer/VBoxContainer/Ambient Sound Button"
-@onready var music_button: Button = $"Panel/MarginContainer/VBoxContainer/HBoxContainer/Music Button"
-@onready var hero_music_button: Button = $"Panel/MarginContainer/VBoxContainer/Hero Music Button"
-@onready var consecutive_button: Button = $"Panel/MarginContainer/VBoxContainer/Consecutive Button"
-@onready var stop_music_button: Button = $"Panel/MarginContainer/VBoxContainer/HBoxContainer/Stop Music Button"
+@onready var ambient_sound_button: Button = %"Ambient Sound Button"
+@onready var music_button: Button = %"Music Button"
+@onready var hero_music_button: Button = %"Hero Music Button"
+@onready var consecutive_button: Button = %"Consecutive Button"
+@onready var stop_music_button: Button = %"Stop Music Button"
+@onready var audio: Screen = $HBoxContainer/Audio
 
 
 func _ready() -> void:
 	for index in AudioServer.bus_count:
 		print(AudioServer.get_bus_name(index))
+	audio.show()
 
 
 func _on_ui_click_button_pressed() -> void:
