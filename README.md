@@ -14,10 +14,12 @@ The following dependencies are included in the addons folder and are required fo
 # Installation Instructions
 1. Copy the `dragonforge_sound` folder from the `addons` folder into your project's `addons` folder.
 2. If it does not exist already, copy the `dragonforge_disk` folder from the `addons` folder into your project's `addons` folder.
+3. If it does not exist already, copy the `dragonforge_user_interface` folder from the `addons` folder into your project's `addons` folder.
 3. Go to **Project -> Project Settings...**
 4. Select the **plugins** tab.
 5. Check the **On checkbox** under **Enabled** for **Dragonforge Disk** (must be enabled **before** the Sound plugin or you will get errors).
 6. Check the **On checkbox** under **Enabled** for **Dragonforge Sound**.
+8. Check the **On checkbox** under **Enabled** for **Dragonforge User Interface**.
 7. Press the **Close** button.
 8. Save your project.
 9. In your project go to **Project -> Reload Current Project**.
