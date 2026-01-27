@@ -8,13 +8,17 @@
 
 config_version=5
 
+[animation]
+
+compatibility/default_parent_skeleton_in_mesh_instance_3d=true
+
 [application]
 
 config/name="Dragonforge Sound v0.15"
 config/description="A sound autoload singleton to handle all sound for a game."
-config/version="0.15"
+config/version="0.16"
 run/main_scene="uid://ceuotv6vw4sby"
-config/features=PackedStringArray("4.5", "Forward Plus")
+config/features=PackedStringArray("4.6", "Forward Plus")
 config/icon="uid://cqc8egkwre73c"
 
 [audio]

@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="SoundEffect" load_steps=4 format=3 uid="uid://bb7hid5d7y1a8"]
+[gd_resource type="Resource" script_class="SoundEffect" format=3 uid="uid://bb7hid5d7y1a8"]
 
 [ext_resource type="Script" uid="uid://b7r30kknqypxw" path="res://addons/dragonforge_sound/resources/sound_effect.gd" id="1_0jxsr"]
 [ext_resource type="AudioStream" uid="uid://ctsokfvnmucxm" path="res://test/Wood Chop Loose A.wav" id="2_hpgxr"]
