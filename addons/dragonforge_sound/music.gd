@@ -1,9 +1,9 @@
-@icon("res://addons/dragonforge_sound/assets/icons/music.svg")
+@icon("res://addons/dragonforge_sound/assets/textures/icons/music.svg")
 ## Music Autoload
 extends Node
 
-signal now_playing(song: Song)
-signal add_song_to_playlist(song: Song)
+#signal now_playing(song: Song)
+#signal add_song_to_playlist(song: Song)
 signal song_finished()
 signal pause_song_finished()
 
@@ -32,7 +32,7 @@ var music_player: AudioStreamPlayer
 
 
 func _ready() -> void:
-	now_playing.connect(_on_now_playing)
+	#now_playing.connect(_on_now_playing)
 	game_music_player.finished.connect(func(): song_finished.emit())
 	paused_game_music_player.finished.connect(func(): pause_song_finished.emit())
 	if get_tree().is_paused():
@@ -54,8 +54,6 @@ func _notification(what: int) -> void:
 ## embedded AudioStream and sends out the now_playing signal.)
 ## Fading uses the value passed. (Default is NONE.)
 func play(song: Resource, fade: Fade = Fade.NONE, fade_time: float = DEFAULT_FADE_TIME) -> void:
-	if song is Song:
-		song.play(fade, fade_time)
 	if song is not AudioStream:
 		return
 	
@@ -152,17 +150,17 @@ func _fade_out(player: AudioStreamPlayer, fade_time: float) -> void:
 ## Prints to the log the details of the song currently playing when a new song
 ## is started. Handles situations where not all information for the song has
 ## been set.
-func _on_now_playing(song: Song) -> void:
-	if song.title.is_empty():
-		song.title = song.song.resource_path.get_file()
-	if song.album == null:
-		print_rich("Song Playing: [color=lawn_green]%s[/color]" % [song.title])
-	else:
-		print_rich("Song Playing: [color=lawn_green][b]%s[/b][/color] by [color=cornflower_blue]%s[/color]" % [song.title, song.get_album_artist()])
-		var album_name = song.get_album_name()
-		if song.album.link.is_empty():
-			album_name = "[color=cornflower_blue]" + album_name + "[/color]"
-		else:
-			var url = "[url=" + song.get_album_link() +"]"
-			album_name = "[color=light_sky_blue]" + url + album_name + "[/url][/color]"
-		print_rich("Album: %s" % album_name)
+#func _on_now_playing(song: Song) -> void:
+	#if song.title.is_empty():
+		#song.title = song.song.resource_path.get_file()
+	#if song.album == null:
+		#print_rich("Song Playing: [color=lawn_green]%s[/color]" % [song.title])
+	#else:
+		#print_rich("Song Playing: [color=lawn_green][b]%s[/b][/color] by [color=cornflower_blue]%s[/color]" % [song.title, song.get_album_artist()])
+		#var album_name = song.get_album_name()
+		#if song.album.link.is_empty():
+			#album_name = "[color=cornflower_blue]" + album_name + "[/color]"
+		#else:
+			#var url = "[url=" + song.get_album_link() +"]"
+			#album_name = "[color=light_sky_blue]" + url + album_name + "[/url][/color]"
+		#print_rich("Album: %s" % album_name)

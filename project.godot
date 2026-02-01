@@ -23,7 +23,7 @@ config/icon="uid://cqc8egkwre73c"
 
 [audio]
 
-buses/default_bus_layout="uid://280csy6ee6ce"
+buses/default_bus_layout=""
 
 [autoload]
 
@@ -36,6 +36,10 @@ Music="*uid://ch5f3qaxf3i7m"
 
 window/size/viewport_width=1280
 window/size/viewport_height=720
+
+[editor]
+
+export/convert_text_resources_to_binary=false
 
 [editor_plugins]
 
