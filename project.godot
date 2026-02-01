@@ -23,14 +23,19 @@ config/icon="uid://cqc8egkwre73c"
 
 [audio]
 
-buses/default_bus_layout="res://addons/dragonforge_sound/resources/sound_component_bus_layout.tres"
+buses/default_bus_layout="uid://280csy6ee6ce"
 
 [autoload]
 
 Disk="*res://addons/dragonforge_disk/disk.tscn"
-Sound="*res://addons/dragonforge_sound/sound.tscn"
-Music="*res://addons/dragonforge_sound/music.tscn"
 UI="*res://addons/dragonforge_user_interface/ui.tscn"
+Sound="*uid://bbwis4cvtrlxp"
+Music="*uid://ch5f3qaxf3i7m"
+
+[display]
+
+window/size/viewport_width=1280
+window/size/viewport_height=720
 
 [editor_plugins]
 
