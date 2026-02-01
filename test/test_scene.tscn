@@ -1,7 +1,15 @@
 [gd_scene format=3 uid="uid://ceuotv6vw4sby"]
 
 [ext_resource type="Script" uid="uid://cqb2dskharmbd" path="res://test/test_scene.gd" id="1_m5cd5"]
+[ext_resource type="Script" uid="uid://jy74aj3d31qq" path="res://test/play_button.gd" id="2_56kpk"]
+[ext_resource type="Script" uid="uid://bm768j30oy5kw" path="res://test/pause_button.gd" id="2_fkvod"]
 [ext_resource type="PackedScene" uid="uid://d2gujmw182d4w" path="res://addons/dragonforge_sound/ui/screens/audio.tscn" id="3_56kpk"]
+[ext_resource type="AudioStream" uid="uid://d02o1318qyvpo" path="res://aseets/audio/music/dragonforge_theme.mp3" id="3_gaudv"]
+[ext_resource type="AudioStream" uid="uid://bnnwmy661ys6n" path="res://aseets/audio/dialogue/miscellaneous_6_ian.wav" id="3_mwmxg"]
+[ext_resource type="AudioStream" uid="uid://carv1d8wsy320" path="res://aseets/audio/sfx/anvil hit 7.wav" id="4_hldr7"]
+[ext_resource type="Script" uid="uid://enr6wmihf37r" path="res://test/play_music_button.gd" id="5_k8f1l"]
+[ext_resource type="AudioStream" uid="uid://rk8eauoer0vw" path="res://aseets/audio/dialogue/miscellaneous_9_karen.wav" id="5_xdggk"]
+[ext_resource type="AudioStream" uid="uid://dbin0xajscbcn" path="res://aseets/audio/music/Dragonforge Theme (Tavern Version).mp3" id="7_lke18"]
 
 [node name="Test Scene" type="Control" unique_id=93880959]
 process_mode = 3
@@ -24,20 +32,15 @@ theme_override_constants/separation = 200
 alignment = 1
 
 [node name="Panel" type="Panel" parent="HBoxContainer" unique_id=79844683]
-custom_minimum_size = Vector2(300, 500)
+custom_minimum_size = Vector2(300, 300)
 layout_mode = 2
+size_flags_vertical = 4
 
 [node name="MarginContainer" type="MarginContainer" parent="HBoxContainer/Panel" unique_id=1733470440]
 layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -150.0
-offset_top = -200.0
-offset_right = 150.0
-offset_bottom = 200.0
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_constants/margin_left = 20
@@ -46,8 +49,68 @@ theme_override_constants/margin_right = 20
 theme_override_constants/margin_bottom = 20
 
 [node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer/Panel/MarginContainer" unique_id=1873226775]
+process_mode = 1
 layout_mode = 2
 theme_override_constants/separation = 20
+
+[node name="Pause Button" type="Button" parent="HBoxContainer/Panel/MarginContainer/VBoxContainer" unique_id=956150932]
+process_mode = 3
+layout_mode = 2
+tooltip_text = "This button pauses the game and all sound EXCEPT for the pause menu music (if playing) and UI button clicks."
+text = "Pause Game"
+script = ExtResource("2_fkvod")
+
+[node name="Main Button" type="Button" parent="HBoxContainer/Panel/MarginContainer/VBoxContainer" unique_id=1243865183]
+layout_mode = 2
+text = "Play Main"
+script = ExtResource("2_56kpk")
+button_name = "Main"
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="HBoxContainer/Panel/MarginContainer/VBoxContainer/Main Button" unique_id=1921497999]
+stream = ExtResource("3_mwmxg")
+
+[node name="Game Music Button" type="Button" parent="HBoxContainer/Panel/MarginContainer/VBoxContainer" unique_id=1684612681]
+layout_mode = 2
+tooltip_text = "This button can only be pressed when the game is un-paused. It controls whether the game music is playing."
+text = "Play Game Music"
+script = ExtResource("5_k8f1l")
+button_name = "Game Music"
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="HBoxContainer/Panel/MarginContainer/VBoxContainer/Game Music Button" unique_id=1749510369]
+stream = ExtResource("7_lke18")
+bus = &"Music"
+
+[node name="Pause Menu MusicMusic Button" type="Button" parent="HBoxContainer/Panel/MarginContainer/VBoxContainer" unique_id=926974538]
+process_mode = 2
+layout_mode = 2
+tooltip_text = "This button can only be pressed when the game is paused. It controls whether the pause menu music is playing."
+text = "Play Pause Menu Music"
+script = ExtResource("5_k8f1l")
+button_name = "Pause Menu Music"
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="HBoxContainer/Panel/MarginContainer/VBoxContainer/Pause Menu MusicMusic Button" unique_id=5923342]
+stream = ExtResource("3_gaudv")
+bus = &"Music"
+
+[node name="SFX Button" type="Button" parent="HBoxContainer/Panel/MarginContainer/VBoxContainer" unique_id=1084476272]
+layout_mode = 2
+text = "Play SFX"
+script = ExtResource("2_56kpk")
+button_name = "SFX"
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="HBoxContainer/Panel/MarginContainer/VBoxContainer/SFX Button" unique_id=2110798297]
+stream = ExtResource("4_hldr7")
+bus = &"SFX"
+
+[node name="Dialogue Button" type="Button" parent="HBoxContainer/Panel/MarginContainer/VBoxContainer" unique_id=1864862933]
+layout_mode = 2
+text = "Play Dialogue"
+script = ExtResource("2_56kpk")
+button_name = "Dialogue"
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="HBoxContainer/Panel/MarginContainer/VBoxContainer/Dialogue Button" unique_id=58279472]
+stream = ExtResource("5_xdggk")
+bus = &"Dialogue"
 
 [node name="Audio" parent="HBoxContainer" unique_id=162290763 instance=ExtResource("3_56kpk")]
 layout_mode = 2

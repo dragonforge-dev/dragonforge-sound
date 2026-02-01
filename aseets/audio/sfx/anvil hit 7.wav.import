@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://carv1d8wsy320"
+path="res://.godot/imported/anvil hit 7.wav-de2b99f16e260a67e715d65bcb01e124.sample"
+
+[deps]
+
+source_file="res://aseets/audio/sfx/anvil hit 7.wav"
+dest_files=["res://.godot/imported/anvil hit 7.wav-de2b99f16e260a67e715d65bcb01e124.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=true
+edit/normalize=false
+edit/loop_mode=2
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2
