@@ -14,23 +14,31 @@ compatibility/default_parent_skeleton_in_mesh_instance_3d=true
 
 [application]
 
-config/name="Dragonforge Sound v0.15"
-config/description="A sound autoload singleton to handle all sound for a game."
-config/version="0.16"
+config/name="Dragonforge Sound v0.17"
+config/description="This plugin manages volume levels for your entire game. It also centrally controls music for gameplay and a pause menu. It has functionality for fading music in and out, cross-fading music, displaying song and album info (for Ogg Vorbius and some Wav files), and playing UI sounds, and playing dialogue."
+config/version="0.17"
 run/main_scene="uid://ceuotv6vw4sby"
 config/features=PackedStringArray("4.6", "Forward Plus")
 config/icon="uid://cqc8egkwre73c"
 
 [audio]
 
-buses/default_bus_layout="res://addons/dragonforge_sound/resources/sound_component_bus_layout.tres"
+buses/default_bus_layout="uid://bubhvcjsgrag1"
 
 [autoload]
 
 Disk="*res://addons/dragonforge_disk/disk.tscn"
-Sound="*res://addons/dragonforge_sound/sound.tscn"
-Music="*res://addons/dragonforge_sound/music.tscn"
 UI="*res://addons/dragonforge_user_interface/ui.tscn"
+Sound="*uid://bbwis4cvtrlxp"
+Music="*uid://ch5f3qaxf3i7m"
+
+[debug]
+
+gdscript/warnings/untyped_declaration=1
+
+[editor]
+
+export/convert_text_resources_to_binary=false
 
 [editor_plugins]
 

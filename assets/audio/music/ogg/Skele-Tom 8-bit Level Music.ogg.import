@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://dwe35gco7bi47"
+path="res://.godot/imported/Skele-Tom 8-bit Level Music.ogg-9ea0183cfe58729aa7d79283bc0fff98.oggvorbisstr"
+
+[deps]
+
+source_file="res://assets/audio/music/ogg/Skele-Tom 8-bit Level Music.ogg"
+dest_files=["res://.godot/imported/Skele-Tom 8-bit Level Music.ogg-9ea0183cfe58729aa7d79283bc0fff98.oggvorbisstr"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4
