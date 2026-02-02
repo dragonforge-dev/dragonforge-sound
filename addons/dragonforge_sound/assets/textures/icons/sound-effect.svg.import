@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c7hrfecbxmsqx"
-path="res://.godot/imported/crate.svg-8ee56cd2c1036b726fe4a0a9f4f7be89.ctex"
+uid="uid://c6sycolekxnrj"
+path="res://.godot/imported/sound-effect.svg-990f00f96419c75db459f807b08dab59.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/textures/icons/crate.svg"
-dest_files=["res://.godot/imported/crate.svg-8ee56cd2c1036b726fe4a0a9f4f7be89.ctex"]
+source_file="res://addons/dragonforge_sound/assets/textures/icons/sound-effect.svg"
+dest_files=["res://.godot/imported/sound-effect.svg-990f00f96419c75db459f807b08dab59.ctex"]
 
 [params]
 

@@ -1,4 +1,4 @@
-@icon("res://addons/dragonforge_sound/assets/icons/sound-effect.svg")
+@icon("res://addons/dragonforge_sound/assets/textures/icons/sound-effect.svg")
 class_name UISounds extends Resource
 
 const IM_MISSING_SOMETHING = preload("uid://bs1qesstrghc8")
