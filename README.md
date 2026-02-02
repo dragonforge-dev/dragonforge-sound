@@ -10,7 +10,7 @@ For use with **Godot 4.6.stable** and later.
 ## Dependencies
 The following dependencies are included in the addons folder and are required for the template to function.
 - [Dragonforge Disk (Save/Load) 0.7](https://github.com/dragonforge-dev/dragonforge-disk)
-- [Dragonforge User Interface 0.2](https://github.com/dragonforge-dev/dragonforge-user-interface)
+- [Dragonforge User Interface 0.2.1](https://github.com/dragonforge-dev/dragonforge-user-interface)
 # Installation Instructions
 1. Copy the `dragonforge_sound` folder from the `addons` folder into your project's `addons` folder.
 2. If it does not exist already, copy the `dragonforge_disk` folder from the `addons` folder into your project's `addons` folder.
