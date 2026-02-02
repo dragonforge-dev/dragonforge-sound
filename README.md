@@ -3,7 +3,7 @@
 [![GitHub release badge](https://badgen.net/github/release/dragonforge-dev/dragonforge-sound/latest)](https://github.com/dragonforge-dev/dragonforge-sound/releases/latest)
 [![GitHub code size in bytes](https://img.shields.io/github/languages/code-size/dragonforge-dev/dragonforge-sound)](https://img.shields.io/github/languages/code-size/dragonforge-dev/dragonforge-sound)
 
-# Dragonforge Sound <img src="/addons/dragonforge_sound/assets/icons/sound.svg" width="32" alt="Sound Project Icon"/>
+# Dragonforge Sound <img src="/addons/dragonforge_sound/assets/textures/icons/sound.svg" width="32" alt="Sound Project Icon"/>
 This plugin manages volume levels for your entire game. It also centrally controls music for gameplay and a pause menu. It has functionality for fading music in and out, cross-fading music, displaying song and album info (for Ogg Vorbius and some Wav files), and playing UI sounds, and playing dialogue.
 # Version 0.17
 For use with **Godot 4.6.stable** and later.
