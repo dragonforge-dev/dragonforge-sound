@@ -51,7 +51,8 @@ alignment = 1
 [node name="Label" type="Label" parent="VBoxContainer/HBoxContainer" unique_id=389023492]
 custom_minimum_size = Vector2(300, 0)
 layout_mode = 2
-text = "- Pausing the game pauses all sounds playing.
+text = "- Play Main button plays music through the Main bus instead of the Music bus.
+- Pausing the game pauses all sounds playing.
 - The pause menu music button only works when the game is paused.
 - Unpausing the game pauses the pause menu music and resumes all wounds playing.
 - Volume controls update volume changes in real time.
