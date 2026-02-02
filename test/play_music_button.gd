@@ -7,6 +7,8 @@ extends Button
 
 func _ready() -> void:
 	pressed.connect(_on_button_pressed)
+	Music.song_started.connect(_on_song_started)
+	Music.song_stopped.connect(_on_song_stopped)
 
 
 func _on_button_pressed() -> void:
@@ -17,3 +19,22 @@ func _on_button_pressed() -> void:
 	else:
 		Music.play(audio_stream_player.stream)
 		text = "Stop " + button_name
+
+
+func _on_song_started() -> void:
+	if get_tree().paused and process_mode == ProcessMode.PROCESS_MODE_WHEN_PAUSED:
+		print("Song Started in pause mode")
+		text = "Stop " + button_name
+	elif not get_tree().paused and process_mode == ProcessMode.PROCESS_MODE_INHERIT:
+		print("Song Started in play mode")
+		text = "Stop " + button_name
+
+
+func _on_song_stopped() -> void:
+	if get_tree().paused and process_mode == ProcessMode.PROCESS_MODE_WHEN_PAUSED:
+		print("Song Stopped in pause mode")
+		text = "Play " + button_name
+	elif not get_tree().paused and process_mode == ProcessMode.PROCESS_MODE_INHERIT:
+		print("Song Stopped in play mode")
+		text = "Play " + button_name
+	

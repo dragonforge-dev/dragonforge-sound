@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://c3yjy5acl5qsq"
+path="res://.godot/imported/Dungeon Dashers Theme Song.ogg-02536d2379120a739af294a1c0c26be7.oggvorbisstr"
+
+[deps]
+
+source_file="res://assets/audio/music/ogg/Dungeon Dashers Theme Song.ogg"
+dest_files=["res://.godot/imported/Dungeon Dashers Theme Song.ogg-02536d2379120a739af294a1c0c26be7.oggvorbisstr"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

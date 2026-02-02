@@ -4,12 +4,19 @@
 [ext_resource type="Script" uid="uid://jy74aj3d31qq" path="res://test/play_button.gd" id="2_56kpk"]
 [ext_resource type="Script" uid="uid://bm768j30oy5kw" path="res://test/pause_button.gd" id="2_fkvod"]
 [ext_resource type="PackedScene" uid="uid://d2gujmw182d4w" path="res://addons/dragonforge_sound/ui/screens/audio.tscn" id="3_56kpk"]
-[ext_resource type="AudioStream" uid="uid://d02o1318qyvpo" path="res://aseets/audio/music/dragonforge_theme.mp3" id="3_gaudv"]
-[ext_resource type="AudioStream" uid="uid://bnnwmy661ys6n" path="res://aseets/audio/dialogue/miscellaneous_6_ian.wav" id="3_mwmxg"]
-[ext_resource type="AudioStream" uid="uid://carv1d8wsy320" path="res://aseets/audio/sfx/anvil hit 7.wav" id="4_hldr7"]
+[ext_resource type="AudioStream" uid="uid://bg3shh5gtjnqx" path="res://assets/audio/music/ogg/Prisoner 42.ogg" id="4_45kef"]
+[ext_resource type="AudioStream" uid="uid://carv1d8wsy320" path="res://assets/audio/sfx/anvil hit 7.wav" id="4_hldr7"]
 [ext_resource type="Script" uid="uid://enr6wmihf37r" path="res://test/play_music_button.gd" id="5_k8f1l"]
-[ext_resource type="AudioStream" uid="uid://rk8eauoer0vw" path="res://aseets/audio/dialogue/miscellaneous_9_karen.wav" id="5_xdggk"]
-[ext_resource type="AudioStream" uid="uid://dbin0xajscbcn" path="res://aseets/audio/music/Dragonforge Theme (Tavern Version).mp3" id="7_lke18"]
+[ext_resource type="AudioStream" uid="uid://rk8eauoer0vw" path="res://assets/audio/dialogue/miscellaneous_9_karen.wav" id="5_xdggk"]
+[ext_resource type="AudioStream" uid="uid://s7i4iqbouuuq" path="res://assets/audio/music/ogg/CritterMon Theme Song (Pokemon Rip-Off).ogg" id="6_1r4rl"]
+[ext_resource type="Script" uid="uid://dgh3g4kyapqxa" path="res://test/fade_button.gd" id="7_ohw67"]
+[ext_resource type="AudioStream" uid="uid://vois6a64jlp7" path="res://assets/audio/music/ogg/Skele-Tom's Candy Caper (K-Pop Cover).ogg" id="8_qrbnt"]
+[ext_resource type="Script" uid="uid://bakoj6bfrnw1v" path="res://test/fade_out.gd" id="9_qrbnt"]
+[ext_resource type="AudioStream" uid="uid://dwe35gco7bi47" path="res://assets/audio/music/ogg/Skele-Tom 8-bit Level Music.ogg" id="9_w8trh"]
+[ext_resource type="AudioStream" uid="uid://c3yjy5acl5qsq" path="res://assets/audio/music/ogg/Dungeon Dashers Theme Song.ogg" id="11_1r4rl"]
+[ext_resource type="AudioStream" uid="uid://b2n3kyp04lkjl" path="res://assets/audio/music/ogg/Eternal Echoes (Remastered).ogg" id="11_w8trh"]
+[ext_resource type="AudioStream" uid="uid://bku6mbh8fbvgb" path="res://assets/audio/music/ogg/Dragonforge Theme.ogg" id="11_wk5yx"]
+[ext_resource type="Script" uid="uid://77t8ub0x0rce" path="res://test/album_info.gd" id="17_w8trh"]
 
 [node name="Test Scene" type="Control" unique_id=93880959]
 process_mode = 3
@@ -21,66 +28,147 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_m5cd5")
 
-[node name="HBoxContainer" type="HBoxContainer" parent="." unique_id=503420669]
+[node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=2066185293]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_constants/separation = 200
+theme_override_constants/separation = 20
 alignment = 1
 
-[node name="Panel" type="Panel" parent="HBoxContainer" unique_id=79844683]
+[node name="Label" type="Label" parent="VBoxContainer" unique_id=1810690555]
+layout_mode = 2
+theme_override_font_sizes/font_size = 32
+text = "Sound Plugin Test Page"
+horizontal_alignment = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer" unique_id=503420669]
+layout_mode = 2
+alignment = 1
+
+[node name="Label" type="Label" parent="VBoxContainer/HBoxContainer" unique_id=389023492]
+custom_minimum_size = Vector2(300, 0)
+layout_mode = 2
+text = "- Pausing the game pauses all sounds playing.
+- The pause menu music button only works when the game is paused.
+- Unpausing the game pauses the pause menu music and resumes all wounds playing.
+- Volume controls update volume changes in real time.
+- Button click sounds are not affected by game pausing/unpausing."
+autowrap_mode = 2
+
+[node name="Panel" type="PanelContainer" parent="VBoxContainer/HBoxContainer" unique_id=123230826]
 custom_minimum_size = Vector2(300, 300)
 layout_mode = 2
 size_flags_vertical = 4
 
-[node name="MarginContainer" type="MarginContainer" parent="HBoxContainer/Panel" unique_id=1733470440]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
+[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer/HBoxContainer/Panel" unique_id=1733470440]
+layout_mode = 2
 theme_override_constants/margin_left = 20
 theme_override_constants/margin_top = 20
 theme_override_constants/margin_right = 20
 theme_override_constants/margin_bottom = 20
 
-[node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer/Panel/MarginContainer" unique_id=1873226775]
+[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/HBoxContainer/Panel/MarginContainer" unique_id=1873226775]
 process_mode = 1
 layout_mode = 2
 theme_override_constants/separation = 20
 
-[node name="Pause Button" type="Button" parent="HBoxContainer/Panel/MarginContainer/VBoxContainer" unique_id=956150932]
+[node name="Pause Button" type="Button" parent="VBoxContainer/HBoxContainer/Panel/MarginContainer/VBoxContainer" unique_id=956150932]
 process_mode = 3
 layout_mode = 2
 tooltip_text = "This button pauses the game and all sound EXCEPT for the pause menu music (if playing) and UI button clicks."
 text = "Pause Game"
 script = ExtResource("2_fkvod")
 
-[node name="Main Button" type="Button" parent="HBoxContainer/Panel/MarginContainer/VBoxContainer" unique_id=1243865183]
+[node name="Main Button" type="Button" parent="VBoxContainer/HBoxContainer/Panel/MarginContainer/VBoxContainer" unique_id=1243865183]
 layout_mode = 2
 text = "Play Main"
 script = ExtResource("2_56kpk")
 button_name = "Main"
 
-[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="HBoxContainer/Panel/MarginContainer/VBoxContainer/Main Button" unique_id=1921497999]
-stream = ExtResource("3_mwmxg")
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="VBoxContainer/HBoxContainer/Panel/MarginContainer/VBoxContainer/Main Button" unique_id=1921497999]
+stream = ExtResource("4_45kef")
 
-[node name="Game Music Button" type="Button" parent="HBoxContainer/Panel/MarginContainer/VBoxContainer" unique_id=1684612681]
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/HBoxContainer/Panel/MarginContainer/VBoxContainer" unique_id=2017287451]
+layout_mode = 2
+alignment = 1
+
+[node name="Fade In" type="Button" parent="VBoxContainer/HBoxContainer/Panel/MarginContainer/VBoxContainer/HBoxContainer" unique_id=415914776]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Fade In"
+script = ExtResource("7_ohw67")
+fade = 2
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="VBoxContainer/HBoxContainer/Panel/MarginContainer/VBoxContainer/HBoxContainer/Fade In" unique_id=2006928721]
+stream = ExtResource("6_1r4rl")
+bus = &"Music"
+
+[node name="Game Music Button" type="Button" parent="VBoxContainer/HBoxContainer/Panel/MarginContainer/VBoxContainer/HBoxContainer" unique_id=1684612681]
+unique_name_in_owner = true
 layout_mode = 2
 tooltip_text = "This button can only be pressed when the game is un-paused. It controls whether the game music is playing."
 text = "Play Game Music"
 script = ExtResource("5_k8f1l")
 button_name = "Game Music"
 
-[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="HBoxContainer/Panel/MarginContainer/VBoxContainer/Game Music Button" unique_id=1749510369]
-stream = ExtResource("7_lke18")
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="VBoxContainer/HBoxContainer/Panel/MarginContainer/VBoxContainer/HBoxContainer/Game Music Button" unique_id=1749510369]
+stream = ExtResource("8_qrbnt")
 bus = &"Music"
 
-[node name="Pause Menu MusicMusic Button" type="Button" parent="HBoxContainer/Panel/MarginContainer/VBoxContainer" unique_id=926974538]
+[node name="Fade Out" type="Button" parent="VBoxContainer/HBoxContainer/Panel/MarginContainer/VBoxContainer/HBoxContainer" unique_id=1574191531]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Fade Out"
+script = ExtResource("9_qrbnt")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="VBoxContainer/HBoxContainer/Panel/MarginContainer/VBoxContainer/HBoxContainer/Fade Out" unique_id=575610422]
+stream = ExtResource("8_qrbnt")
+bus = &"Music"
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="VBoxContainer/HBoxContainer/Panel/MarginContainer/VBoxContainer" unique_id=2101635643]
+layout_mode = 2
+alignment = 1
+
+[node name="Cross Fade Button" type="Button" parent="VBoxContainer/HBoxContainer/Panel/MarginContainer/VBoxContainer/HBoxContainer2" unique_id=1013320754]
+unique_name_in_owner = true
+layout_mode = 2
+tooltip_text = "This button can only be pressed when the game is un-paused. It controls whether the game music is playing."
+text = "Cross Fade"
+script = ExtResource("7_ohw67")
+fade = 4
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="VBoxContainer/HBoxContainer/Panel/MarginContainer/VBoxContainer/HBoxContainer2/Cross Fade Button" unique_id=613680262]
+stream = ExtResource("9_w8trh")
+bus = &"Music"
+
+[node name="Fade Out-In Button" type="Button" parent="VBoxContainer/HBoxContainer/Panel/MarginContainer/VBoxContainer/HBoxContainer2" unique_id=293279594]
+unique_name_in_owner = true
+layout_mode = 2
+tooltip_text = "This button can only be pressed when the game is un-paused. It controls whether the game music is playing."
+text = "Fade Out-In"
+script = ExtResource("7_ohw67")
+fade = 5
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="VBoxContainer/HBoxContainer/Panel/MarginContainer/VBoxContainer/HBoxContainer2/Fade Out-In Button" unique_id=73385059]
+stream = ExtResource("11_w8trh")
+bus = &"Music"
+
+[node name="Fade Out-play Button2" type="Button" parent="VBoxContainer/HBoxContainer/Panel/MarginContainer/VBoxContainer/HBoxContainer2" unique_id=55051843]
+unique_name_in_owner = true
+layout_mode = 2
+tooltip_text = "This button can only be pressed when the game is un-paused. It controls whether the game music is playing."
+text = "Fade Out-Play"
+script = ExtResource("7_ohw67")
+fade = 3
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="VBoxContainer/HBoxContainer/Panel/MarginContainer/VBoxContainer/HBoxContainer2/Fade Out-play Button2" unique_id=228274270]
+stream = ExtResource("11_1r4rl")
+bus = &"Music"
+
+[node name="Pause Menu MusicMusic Button" type="Button" parent="VBoxContainer/HBoxContainer/Panel/MarginContainer/VBoxContainer" unique_id=926974538]
 process_mode = 2
 layout_mode = 2
 tooltip_text = "This button can only be pressed when the game is paused. It controls whether the pause menu music is playing."
@@ -88,31 +176,41 @@ text = "Play Pause Menu Music"
 script = ExtResource("5_k8f1l")
 button_name = "Pause Menu Music"
 
-[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="HBoxContainer/Panel/MarginContainer/VBoxContainer/Pause Menu MusicMusic Button" unique_id=5923342]
-stream = ExtResource("3_gaudv")
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="VBoxContainer/HBoxContainer/Panel/MarginContainer/VBoxContainer/Pause Menu MusicMusic Button" unique_id=5923342]
+stream = ExtResource("11_wk5yx")
 bus = &"Music"
 
-[node name="SFX Button" type="Button" parent="HBoxContainer/Panel/MarginContainer/VBoxContainer" unique_id=1084476272]
+[node name="SFX Button" type="Button" parent="VBoxContainer/HBoxContainer/Panel/MarginContainer/VBoxContainer" unique_id=1084476272]
 layout_mode = 2
 text = "Play SFX"
 script = ExtResource("2_56kpk")
 button_name = "SFX"
 
-[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="HBoxContainer/Panel/MarginContainer/VBoxContainer/SFX Button" unique_id=2110798297]
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="VBoxContainer/HBoxContainer/Panel/MarginContainer/VBoxContainer/SFX Button" unique_id=2110798297]
 stream = ExtResource("4_hldr7")
 bus = &"SFX"
 
-[node name="Dialogue Button" type="Button" parent="HBoxContainer/Panel/MarginContainer/VBoxContainer" unique_id=1864862933]
+[node name="Dialogue Button" type="Button" parent="VBoxContainer/HBoxContainer/Panel/MarginContainer/VBoxContainer" unique_id=1864862933]
 layout_mode = 2
 text = "Play Dialogue"
 script = ExtResource("2_56kpk")
 button_name = "Dialogue"
 
-[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="HBoxContainer/Panel/MarginContainer/VBoxContainer/Dialogue Button" unique_id=58279472]
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="VBoxContainer/HBoxContainer/Panel/MarginContainer/VBoxContainer/Dialogue Button" unique_id=58279472]
 stream = ExtResource("5_xdggk")
 bus = &"Dialogue"
 
-[node name="Audio" parent="HBoxContainer" unique_id=162290763 instance=ExtResource("3_56kpk")]
+[node name="Audio" parent="VBoxContainer/HBoxContainer" unique_id=162290763 instance=ExtResource("3_56kpk")]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(400, 0)
 layout_mode = 2
 size_flags_horizontal = 0
-size_flags_vertical = 4
+
+[node name="Album Display" type="RichTextLabel" parent="VBoxContainer" unique_id=1929866593]
+unique_name_in_owner = true
+process_mode = 3
+custom_minimum_size = Vector2(0, 32)
+layout_mode = 2
+bbcode_enabled = true
+horizontal_alignment = 1
+script = ExtResource("17_w8trh")

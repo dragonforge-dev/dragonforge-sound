@@ -1,6 +1,6 @@
 extends Control
 
-@onready var audio: Screen = $HBoxContainer/Audio
+@onready var audio: Screen = %Audio
 
 
 func _ready() -> void:

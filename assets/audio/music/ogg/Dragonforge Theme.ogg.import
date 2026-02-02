@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://bku6mbh8fbvgb"
+path="res://.godot/imported/Dragonforge Theme.ogg-079e8daaa481eeba7ff8e5f7566c493e.oggvorbisstr"
+
+[deps]
+
+source_file="res://assets/audio/music/ogg/Dragonforge Theme.ogg"
+dest_files=["res://.godot/imported/Dragonforge Theme.ogg-079e8daaa481eeba7ff8e5f7566c493e.oggvorbisstr"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

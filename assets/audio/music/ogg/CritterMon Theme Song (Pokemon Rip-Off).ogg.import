@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://s7i4iqbouuuq"
+path="res://.godot/imported/CritterMon Theme Song (Pokemon Rip-Off).ogg-65891c5797fb2c946a3606ccbf134ba1.oggvorbisstr"
+
+[deps]
+
+source_file="res://assets/audio/music/ogg/CritterMon Theme Song (Pokemon Rip-Off).ogg"
+dest_files=["res://.godot/imported/CritterMon Theme Song (Pokemon Rip-Off).ogg-65891c5797fb2c946a3606ccbf134ba1.oggvorbisstr"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

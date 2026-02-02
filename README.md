@@ -4,8 +4,8 @@
 [![GitHub code size in bytes](https://img.shields.io/github/languages/code-size/dragonforge-dev/dragonforge-sound)](https://img.shields.io/github/languages/code-size/dragonforge-dev/dragonforge-sound)
 
 # Dragonforge Sound <img src="/addons/dragonforge_sound/assets/icons/sound.svg" width="32" alt="Sound Project Icon"/>
-A Sound Autoload singleton to handle all sound for a game.
-# Version 0.16
+This plugin manages volume levels for your entire game. It also centrally controls music for gameplay and a pause menu. It has functionality for fading music in and out, cross-fading music, displaying song and album info (for Ogg Vorbius and some Wav files), and playing UI sounds, and playing dialogue.
+# Version 0.17
 For use with **Godot 4.6.stable** and later.
 ## Dependencies
 The following dependencies are included in the addons folder and are required for the template to function.
@@ -18,90 +18,101 @@ The following dependencies are included in the addons folder and are required fo
 4. Go to **Project -> Project Settings...**
 5. Select the **plugins** tab.
 6. Check the **On checkbox** under **Enabled** for **Dragonforge Disk** (must be enabled **before** the Sound plugin or you will get errors).
-7. Check the **On checkbox** under **Enabled** for **Dragonforge Sound**.
-8. Check the **On checkbox** under **Enabled** for **Dragonforge User Interface**.
+7. Check the **On checkbox** under **Enabled** for **Dragonforge User Interface**.
+8. Check the **On checkbox** under **Enabled** for **Dragonforge Sound**.
 9. Press the **Close** button.
 10. Save your project.
-11. In your project go to **Project -> Reload Current Project**.
-12. Wait for the project to reload.
 
-**NOTE:** As of version 0.11, the plugin adds the buses it needs, after a restart. If the plugin is disabled, the buses are removed and a restart is required.
+**NOTE:** As of version 0.17, the plugin no longer adds the buses it needs. If you have an old version of the plugin, load the defaults and manually create the buses you need.
 
 # Usage Instructions
-This plugin manages sound for an entire game. It is intended to be easy to use, to centrally control sound resources, and reduce the memory usage of sound in the game.
+Out of the box, this plugin has an Audio screen that supports volume controls for Main (Master Bus), Music, SFX, and Dialogue buses. However, due to a bug with Godot, you must create these buses yourself for now. If you're not using Dialogue, you do not need to make a Dialogue bus, but it is recommended you make the other three.
 
-## Sound <img src="/addons/dragonforge_sound/assets/icons/sound.svg" width="32" alt="Sound Autoload Icon"/>
+1. Click the **Audio** tab at the bottom of the editor.
+2. Click the **Add Bus** button, and name the new bus **"SFX"**.
+3. Click the **Add Bus** button, and name the new bus **"UI"**.
+4. Click the **Add Bus** button, and name the new bus **Music**.
 
-### SoundEffect Resource <img src="/addons/dragonforge_sound/assets/icons/sound-effect.svg" width="32" alt="Sound Effect Icon"/>
-The sound effect resource is a way to track information through an attached **SFXProject** resource. It holds an **AudioStream** to play the sound effect, as well as an optional **Title** and **SFXProject** which can hold information like an **Album** does for a **Song**.
+**NOTE:** Any buses you do not create will result in **Sound** and/or **Music** using the Master bus instead. Also, those volume controls will be missing from **Audio** screen as you cannot configure their volume controls seperately without separate audio buses.
 
-#### play_only_one_sound = true
-If the `play_only_one_sound` boolean is set to `true`, and the `stream` is an **AudioStreamPlaylist**, then every time this sound effect is player, it will play the next sound in sequence. If the **AudioStreamPlaylist** has its `shuffle` value set to `true`, then the sound played will be chosen randomly each time.
+# Class Descriptions
+## Sound (Autoload) <img src="/addons/dragonforge_sound/assets/textures/icons/sound.svg" width="32" alt="Sound Autoload Icon"/>
 
-This feature can be used if - for example - you have a list of bespoke hammer sounds and you want a random one played each time the player swings a hammer. Making each stream inside the playlist an AudioStreamRandomizer would allow you even greater variablility by creating a random pitch each time.
+### Signals
+- `volume_changed(audio_bus: String, new_value: float)` Emitted when the volume for a bus is changed.
 
-### SFXProject Resource <img src="/addons/dragonforge_sound/assets/icons/crate.svg" width="32" alt="Sound Effect Project Icon"/>
-Like an **Album** this stores details about where the sound effect comes from. It contains the project's name, the creator and a link to the project. This is intended just to help developers track their sound effects. Especially useful if multiple people are working on the project. Unlike the **Album** resource, the plugin's code does nothing with this information.
+### Export Variables
+- `enable_3d_look = false` When true, 3D look is on for the game. The right stick will look, as well as the mouse. In addition the mouse will be captured when the game is playing and freed when the game is paused. Defaults to `false` (off).
 
-### Volume
-The plugin loads and saves volume levels. By using the appropriate functions, you can hook these calls up to your UI. For more information on how to do that, check out the Dragonforge Game Template.
+### Public Member Variables
+- `ui_sounds: UISounds` Stores custom sounds for the UI Player that can be saved to a resource.
 
-### Sound Effects
+### Public Functions
+- `get_sound(sound_name: StringName) -> AudioStream` Returns the [AudioStream] from [member ui_sounds] that matches [param sound_name]. Returns null if nothing is found.
+- `play_ui_sound(stream: AudioStream) -> void` Plays an [AudioStream] through the UI Sound Player which is always active.
+- `play_volume_confirm_sound(bus_name: String = "Master") -> void` Plays the default volume confirm sound therough the passed bus. Used for confirming volume changes in the Audio settings menu.
+- `play_dialogue(stream: AudioStream) -> void` Plays an [AudioStream] through the Dialogue Player which is always active.
+- `set_bus_volume(bus: String, new_value: float) -> void` Sets the volume of the given bus using the float for the volume from 0.0 (off) to 1.0 (full volume). Also stores the value in the settings file.
+- `get_bus_volume(bus: String) -> float` Returns the volume for the bus passed as a float from 0.0 (off) to 1.0 (full volume).
 
-### UI Sound Effects
 
-### Ambient Sound Effects
+## Music (Autoload) <img src="/addons/dragonforge_sound/assets/textures/icons/music.svg" width="32" alt="Music Icon"/>
+The **Music** system has been separated from the **Sound** system to facilitate easier coding. It allows the fading of music in and out, as well as cross-fading of music, and supports a game music player and a pause menu music player that automatically switch on and off when the game is paused or unpaused using `get_tree().paused`.
 
-### Dialogue
+### Signals
+- `signal song_started` Emitted when a new song starts.
+- `signal song_stopped` Emitted when a song is stopped.
+- `signal song_finished` Emitted when a song is not looped and finishes without being stopped externally.
+- `signal pause_song_finished` Emitted when the pause menu song is not looped and finishes without being stopped externally.
+- `signal fade_out_finished` Emitted when a song is faded out, and the fade out finishes.
 
-### Using Custom Buses
+### Enums
+```
+enum Fade {
+	## Not intended to be used, but will function the same as NONE.
+	DEFAULT = 0,
+	## No fading. The current song (if any) is stopped and this one is started.
+	NONE = 1,
+	## The previous song (if any) is stopped, and this one fades in.
+	IN = 2,
+	## The previous song fades out and this one is started from the beginning after the fade is complete.
+	OUT = 3,
+	## The previous song fades out while this song fades in over the fade_time.
+	CROSS = 4,
+	## The previous song (if any) fades out completely first using the fade_time, then this song fades in over the fade_time.
+	OUT_THEN_IN = 5
+}
+```
 
-## Music <img src="/addons/dragonforge_sound/assets/icons/music.svg" width="32" alt="Music Icon"/>
-The **Music** system has been separated from the **Sound** system to facilitate easier coding. Music can play regular Godot **AudioStream**s, but can also use its own **Song** resources. You can use either or both when playing music.
+### Public Functions
+- `play(stream: AudioStream, fade: Fade = Fade.NONE, fade_time: float = DEFAULT_FADE_TIME) -> void` Plays an AudioStream through the music channel. If a Song resource is passed, the Song's own play() method is called (which calls this method with the embedded AudioStream and sends out the now_playing signal.) Fading uses the value passed. (Default is NONE.)
+- `stop(fade: Fade = Fade.NONE, fade_time: float = DEFAULT_FADE_TIME) -> void` Stops the currently playing song. If fade_out is true, it fades out the currently playing song over the fade_time passed (default is 2 seconds).
+- `pause() -> float` Pauses the currently playing music. Returns the playback position where the stream was paused as a float.
+- `unpause() -> void` Unpauses the currently queued music.
+- `is_paused() -> bool` Returns whether or not music is currently paused.
+- `is_playing() -> bool` Returns whether or not music is currently playing.
+- `fade_in(audio_stream_player: AudioStreamPlayer, audio_stream: AudioStream = null, fade_time: float = DEFAULT_FADE_TIME) -> void` Fades the [param audio_stream] in using the [param audio_stream_player] [AudioStreamPlayer] and the [param fade_time]. If no [param audio_stream] is given or [null] is passed, it is assumed that value was already set outside this function.
+- `fade_out(audio_stream_player: AudioStreamPlayer, fade_time: float = DEFAULT_FADE_TIME) -> void` Fades out the currently playing stream on the [param audio_stream_player] [AudioStreamPlayer] using the [param fade_time]. Once the player is stopped, the volume is set to the default level for the passed [AudioStreamPlayer]'s bus.
+- `cross_fade(audio_stream_player: AudioStreamPlayer, audio_stream: AudioStream, fade_time: float = DEFAULT_FADE_TIME) -> void` Cross fades the [param audio_stream] in while fading the existing stream playing in the [param audio_stream_player] [AudioStreamPlayer] using the [param fade_time].
+- `get_song_info_bbcode() -> String` Returns the title, artist and album for the currently playing song if they are stored in the metadata of the song and the stream is of type [AudioStreamOggVorbis] or [AudioStreamWAV]. NOTE: [AudioStreamMP3] is not supported by Godot at this time.
 
-#### Signals
-- **now_playing(song: Song)** Sent every time a song is played. Includes all the song and album infromation.
-- **add_song_to_playlist(song: Song)** Can be called by a game to add a song to a playlist. A playlist can then listen and then add the given song to itself. Intended for use when you want an in-gmae playlist to add songs as rewards, or as they are heard.
-
-#### Paused Music
+## Paused Music
 As of version 0.10, the Music player has two players - one for when the game is playing, and one for when the game is paused (*e.g. get_tree().is_paused()*). If a song is set when the game is paused, that song with be played and paused whenever the game is in a paused state. Likewise it can only be stopped when the game is in a paused state. Similarily, a song playing in the game will pause when the game is paused, and resume when the game is unpaused.
 
 This was implemented due to issues trying to maintain and switch two different songs between the states. You do not have to do anything for this feature to work. It just does.
-
-### Song Resource <img src="/addons/dragonforge_sound/assets/icons/song.svg" width="32" alt="Song Icon"/>
-A **Song** resource contains information about a song. It includes an **AudioStream** containing the music itself, as well as the song's **Title** and **Album**. When a **Song** resource is played using the **Music** plugin, the song and album information is sent out as a signal that anything in your game can look for. This can be used for an in-game music displays for example.
-
-#### Play Transition (Fades In and Out and Crossfades)
-Setting this value for a song sets the [b]entrance[/b]. Has [i]no[/i] effect when this song stops playing. To fade a song out without playing another song call `Music.stop(fade = true)`
-
-**Options Are:**
-- NONE: No fading. The current song (if any) is stopped and this one is started.
-- IN: The previous song (if any) is stopped, and this one fades in.
-- OUT: The previous song fades out and this one is started from the beginning after the fade is complete.
-- CROSS: The previous song fades out while this song fades in over the fade_time.
-- OUT_THEN_IN: The previous song (if any) fades out completely first using the fade_time, then this song fades in over the fade_time.
-
-### Album Resource <img src="/addons/dragonforge_sound/assets/icons/album-large.svg" width="32" alt="Album Icon"/>
-An **Album** resource contains information about an album, and can be linked to multiple songs. It contains the album's **Artist**, **Title** and an optional hyperlink url to the album online. This is intended both to help developers keep track of where their music came from, as well as make it easy to display that information in game jams or small indie games where you want to help people find the resources you used and give some advertising and credit to the song creators.
 
 # Copyright
 To clarify the information below, all the icons can be freely used and even customized by following the links. The music and sound effects are all copyrighted and you must buy a copy from the copyright holder to be able to use the files anywhere else. The good news is all of the resources are priced reasonably, and you'll get a lot of other really great content by supporting these creators. Direct links have been provided to allow you to buy any files in which you have interest.
 
 ## Icons
 Icons provided by [SVG Repo](https://www.svgrepo.com/).
-Album and Song Icons by [Solar Icons](https://www.svgrepo.com/author/Solar%20Icons/) [CC Attribution License](https://www.svgrepo.com/page/licensing/#CC%20Attribution)
-Explosion Icon by [Nagoshiashumari](https://www.svgrepo.com/author/nagoshiashumari/) [GPL License](https://www.svgrepo.com/page/licensing/#GPL)
-Crate Icon by [SVG Repo](https://www.svgrepo.com/) [CCO License](https://www.svgrepo.com/page/licensing/#CC0)
 
 ## Music
-This music was licensed and paid for by Dragonforge Development which does not have redistribution rights. You may not use this music in any other game, tutorial, or for any other purpose - even if it free - without the express permission of the copyright holder.
-OST 1 - Clear Waters Copyright by pegonthetrack & ELVGames from [Epic Medieval Music Pack I](https://elvgames.itch.io/epic-medieval-music-pack)
+The music in the test program was created and copyright by Dragonforge Development 2025.
 
 ## Sound Effects
-These sound effects were licensed and paid for by Dragonforge Development which does not have redistribution rights. You may not use these sound effect files in any other game, tutorial, or for any other purpose - even if it free - without the express permission of the copyright holder.
-Dig, Mine Medium Rock, and Wood Chop Loose sounds from [Harvesting Sound FX Pack](https://ovanisound.com/products/harvesting-sound-fx-pack) by [Ovani Sound](https://ovanisound.com/)
-Field Day Loop from [Environmental Ambiences Sound FX Pack Vol. 1](https://ovanisound.com/products/environmental-ambiences-sound-fx-pack-vol-1) by [Ovani Sound](https://ovanisound.com/)
-Blacksmith Anvil Ting sound from [Medieval Fantasy Sound FX Pack Vol. 4](https://ovanisound.com/products/medieval-fantasy-sound-fx-pack-vol-4) by [Ovani Sound](https://ovanisound.com/)
+Anvil Hit 7 from [FilmCow Royalty Free Sound Effect Library](https://filmcow.itch.io/filmcow-sfx) by [FilmCow](https://filmcow.itch.io/)
+Countdown (miscellaneous_8_karen.wav) from [Super Dialogue Audio Pack](https://dillonbecker.itch.io/sdap) by [Dillon Becker](https://dillonbecker.itch.io/)
 
 # Localization
 This project's UI has been created to work with localization. You can easily use localization by using the [Dragonforge Localization](https://github.com/dragonforge-dev/dragonforge-localization) plugin. The following labels exist and should be given translations:
