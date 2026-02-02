@@ -101,9 +101,6 @@ As of version 0.10, the Music player has two players - one for when the game is 
 
 This was implemented due to issues trying to maintain and switch two different songs between the states. You do not have to do anything for this feature to work. It just does.
 
-# Copyright
-To clarify the information below, all the icons can be freely used and even customized by following the links. The music and sound effects are all copyrighted and you must buy a copy from the copyright holder to be able to use the files anywhere else. The good news is all of the resources are priced reasonably, and you'll get a lot of other really great content by supporting these creators. Direct links have been provided to allow you to buy any files in which you have interest.
-
 ## Icons
 Icons provided by [SVG Repo](https://www.svgrepo.com/).
 
