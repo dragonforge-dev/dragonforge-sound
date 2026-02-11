@@ -7,7 +7,7 @@ func _ready() -> void:
 
 
 func _on_song_started() -> void:
-	text = Music.get_song_info_bbcode()
+	text = Music.get_current_song().get_song_info_as_bbcode()
 
 
 func _on_song_stopped() -> void:

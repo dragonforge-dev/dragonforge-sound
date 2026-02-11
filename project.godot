@@ -14,9 +14,9 @@ compatibility/default_parent_skeleton_in_mesh_instance_3d=true
 
 [application]
 
-config/name="Dragonforge Sound v0.17"
+config/name="Dragonforge Sound v0.17.1"
 config/description="This plugin manages volume levels for your entire game. It also centrally controls music for gameplay and a pause menu. It has functionality for fading music in and out, cross-fading music, displaying song and album info (for Ogg Vorbius and some Wav files), and playing UI sounds, and playing dialogue."
-config/version="0.17"
+config/version="0.17.1"
 run/main_scene="uid://ceuotv6vw4sby"
 config/features=PackedStringArray("4.6", "Forward Plus")
 config/icon="uid://cqc8egkwre73c"
