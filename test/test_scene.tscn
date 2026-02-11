@@ -16,7 +16,18 @@
 [ext_resource type="AudioStream" uid="uid://c3yjy5acl5qsq" path="res://assets/audio/music/ogg/Dungeon Dashers Theme Song.ogg" id="11_1r4rl"]
 [ext_resource type="AudioStream" uid="uid://b2n3kyp04lkjl" path="res://assets/audio/music/ogg/Eternal Echoes (Remastered).ogg" id="11_w8trh"]
 [ext_resource type="AudioStream" uid="uid://bku6mbh8fbvgb" path="res://assets/audio/music/ogg/Dragonforge Theme.ogg" id="11_wk5yx"]
-[ext_resource type="Script" uid="uid://77t8ub0x0rce" path="res://test/album_info.gd" id="17_w8trh"]
+[ext_resource type="Script" uid="uid://drrmrc3lvr178" path="res://addons/dragonforge_sound/ui/containers/music_marquee_h_scroll_container.gd" id="19_vb1hb"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_mfucm"]
+bg_color = Color(0.20392157, 0.20392157, 0.20392157, 0.69803923)
+border_width_left = 3
+border_width_top = 3
+border_width_right = 3
+border_width_bottom = 3
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
 
 [node name="Test Scene" type="Control" unique_id=93880959]
 process_mode = 3
@@ -201,17 +212,23 @@ button_name = "Dialogue"
 stream = ExtResource("5_xdggk")
 bus = &"Dialogue"
 
+[node name="PanelContainer" type="PanelContainer" parent="VBoxContainer/HBoxContainer/Panel/MarginContainer/VBoxContainer" unique_id=629391916]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_styles/panel = SubResource("StyleBoxFlat_mfucm")
+
+[node name="MusicMarqueeHScrollContainer" type="ScrollContainer" parent="VBoxContainer/HBoxContainer/Panel/MarginContainer/VBoxContainer/PanelContainer" unique_id=190546301]
+custom_minimum_size = Vector2(308, 28)
+layout_mode = 2
+size_flags_horizontal = 4
+script = ExtResource("19_vb1hb")
+metadata/_custom_type_script = "uid://drrmrc3lvr178"
+
+[node name="RichTextLabel" type="RichTextLabel" parent="VBoxContainer/HBoxContainer/Panel/MarginContainer/VBoxContainer/PanelContainer/MusicMarqueeHScrollContainer" unique_id=2013556675]
+layout_mode = 2
+
 [node name="Audio" parent="VBoxContainer/HBoxContainer" unique_id=162290763 instance=ExtResource("3_56kpk")]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(400, 0)
 layout_mode = 2
 size_flags_horizontal = 0
-
-[node name="Album Display" type="RichTextLabel" parent="VBoxContainer" unique_id=1929866593]
-unique_name_in_owner = true
-process_mode = 3
-custom_minimum_size = Vector2(0, 32)
-layout_mode = 2
-bbcode_enabled = true
-horizontal_alignment = 1
-script = ExtResource("17_w8trh")

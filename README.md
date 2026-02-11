@@ -5,7 +5,7 @@
 
 # Dragonforge Sound <img src="/addons/dragonforge_sound/assets/textures/icons/sound.svg" width="32" alt="Sound Project Icon"/>
 This plugin manages volume levels for your entire game. It also centrally controls music for gameplay and a pause menu. It has functionality for fading music in and out, cross-fading music, displaying song and album info (for Ogg Vorbius and some Wav files), and playing UI sounds, and playing dialogue.
-# Version 0.17
+# Version 0.17.1
 For use with **Godot 4.6.stable** and later.
 ## Dependencies
 The following dependencies are included in the addons folder and are required for the template to function.
@@ -100,6 +100,29 @@ enum Fade {
 As of version 0.10, the Music player has two players - one for when the game is playing, and one for when the game is paused (*e.g. get_tree().is_paused()*). If a song is set when the game is paused, that song with be played and paused whenever the game is in a paused state. Likewise it can only be stopped when the game is in a paused state. Similarily, a song playing in the game will pause when the game is paused, and resume when the game is unpaused.
 
 This was implemented due to issues trying to maintain and switch two different songs between the states. You do not have to do anything for this feature to work. It just does.
+
+## Song <img src="/addons/dragonforge_sound/assets/textures/icons/song.svg" width="32" alt="Song Icon"/>
+A resource to retrieve song information more easily.
+
+### Export Variables
+- `stream: AudioStream` The [AudioStream] information is pulled from, if it exists.
+- `title: String` The song's title. If metadata is not set, or the [AudioStream] does not support reading tags, a humanized version of the filename is used.
+- `artist: String` The song's artist, or alternately, album_artist, if either metadata is set. It is recommended to use [AudioStreamOggVorbis] for this feature.
+- `album: String` The song's album, if the metadata is set. It is recommended to use [AudioStreamOggVorbis] for this feature.
+
+### Public Functions
+- `get_song_info_as_bbcode(title_color: Color = Color.WHITE, artist_color: Color = Color.WHITE, album_color: Color = Color.WHITE) -> String` Returns the title, artist and album for the currently playing song as BBCode if they are stored in the metadata of the song and the stream is of type [AudioStreamOggVorbis] or [AudioStreamWAV]. Otherwise just returns the song title based on the name of the file. If [Color] values are passed for title, artist, or album they will be used in the returend BBCode. Otherwise, they will default to white.
+- `get_song_info_as_text() -> String` Returns the title, artist and album for the currently playing song if they are stored in the metadata of the song and the stream is of type [AudioStreamOggVorbis] or [AudioStreamWAV]. Otherwise just returns the song title based on the name of the file.
+
+## UI Sounds <img src="/addons/dragonforge_sound/assets/textures/icons/ui_sounds.svg" width="32" alt="UI Sounds Icon"/>
+A list of sounds that can be played. Stored in a resource that is local to the game so that it is easy to updated the Sound plugin and re-apply settings.
+
+### Export Variables
+- `sounds: Dictionary[String, AudioStream]` A list of sounds that can be played. Stored in a resource that is local to the game so that it is easy to updated the Sound plugin and re-apply settings.
+
+### Public Functions
+- `get_sound(sound_name: String) -> AudioStream` Retrieve an AudioStream stored under the given name.
+
 
 ## Icons
 Icons provided by [SVG Repo](https://www.svgrepo.com/).
